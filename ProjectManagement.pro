@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql xlsx
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,10 +28,22 @@ SOURCES += main.cpp\
     logindialog.cpp
 
 HEADERS  += mainwindow.h \
-    logindialog.h
+    logindialog.h \
+    define.h
 
 FORMS    += mainwindow.ui \
     logindialog.ui
 
 RESOURCES += \
     projectmanagement.qrc
+
+win32
+{
+   RC_FILE = ProjectManagement.rc
+   CONFIG += embed_manifest_exe
+   QMAKE_LFLAGS_WINDOWS += /MANIFESTUAC:level=\'requireAdministrator\'
+}
+
+TRANSLATIONS += Lang_ko_KR.ts
+
+

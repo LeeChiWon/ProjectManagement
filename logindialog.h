@@ -2,6 +2,7 @@
 #define LOGINDIALOG_H
 
 #include <QDialog>
+#include "define.h"
 
 namespace Ui {
 class LoginDialog;
@@ -18,13 +19,24 @@ public:
 signals:
     void LoggedIn();
 
+public slots:
+    void reject();
+
 private slots:
     void on_pushButton_Login_clicked();
+    void on_pushButton_Exit_clicked();
+    void LoginShow();
 
 private:
     Ui::LoginDialog *ui;
+    QSettings *Setting;
+    bool isReject;
+    QTranslator Translator;
 
+    void closeEvent(QCloseEvent *event);
     void BgInit();
+    void SettingInit();
+    void SplashScreen();
 };
 
 #endif // LOGINDIALOG_H

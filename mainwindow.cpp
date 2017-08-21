@@ -1,5 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "define.h"
+
+QString LoginID;
+int LoginLevel;
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,4 +16,11 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_pushButton_Logout_clicked()
+{
+    this->hide();
+    this->close();
+    QDesktopServices::openUrl(QUrl("file:///"+QApplication::applicationFilePath()));
 }
