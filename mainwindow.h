@@ -20,6 +20,8 @@ public:
 private slots:
     void on_pushButton_Logout_clicked();
 
+    void on_actionConfiguration_triggered(bool checked);
+
 private:
     Ui::MainWindow *ui;
 };

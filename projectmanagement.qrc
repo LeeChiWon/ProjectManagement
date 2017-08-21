@@ -3,5 +3,6 @@
         <file>img/login.png</file>
         <file>img/projectmanagement.png</file>
         <file>translator/Lang_ko_KR.qm</file>
+        <file>img/configuration.png</file>
     </qresource>
 </RCC>

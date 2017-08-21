@@ -24,3 +24,8 @@ void MainWindow::on_pushButton_Logout_clicked()
     this->close();
     QDesktopServices::openUrl(QUrl("file:///"+QApplication::applicationFilePath()));
 }
+
+void MainWindow::on_actionConfiguration_triggered(bool checked)
+{
+    ui->actionConfiguration->setChecked(checked);
+}
