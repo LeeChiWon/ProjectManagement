@@ -4,7 +4,8 @@
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LoginDialog),
-    isReject(false)
+    isReject(false),
+    LoginLevel(0)
 {
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);//|Qt::WindowStaysOnTopHint);
@@ -39,27 +40,27 @@ void LoginDialog::SettingInit()
     Setting=new QSettings("EachOne","ProjectManagement",this);
     ui->checkBox_IDSave->setChecked(Setting->value("Login/LoginCheckBox").toBool());
     ui->lineEdit_ID->setText(Setting->value("Login/LoginID").toString());
-
 }
 
 void LoginDialog::SplashScreen()
 {
+    this->hide();
     QSplashScreen *splashScreen=new QSplashScreen;
     splashScreen->setPixmap(QPixmap(":/img/login.png"));
     splashScreen->show();
 
-    QTimer::singleShot(3000,splashScreen,SLOT(close()));
-    QTimer::singleShot(3000,this,SLOT(LoginShow()));
+    QTimer::singleShot(2000,splashScreen,SLOT(close()));
+    QTimer::singleShot(2000,this,SLOT(LoginShow()));
 }
 
 void LoginDialog::on_pushButton_Login_clicked()
 {
     if(ui->lineEdit_ID->text()=="admin" && ui->lineEdit_Password->text()=="admin")
     {
-        SplashScreen();
+        LoginName=tr("Master");
+        LoginLevel=LOGIN_MASTER;
+        SplashScreen();        
     }
-
-    LoginID=ui->lineEdit_ID->text();
 
 
 }
@@ -89,6 +90,6 @@ void LoginDialog::on_pushButton_Exit_clicked()
 void LoginDialog::LoginShow()
 {
     emit LoggedIn();
-    LoginLevel=LOGIN_MASTER;
+    emit UserInfo(ui->lineEdit_ID->text(),LoginName,LoginLevel);
     this->close();
 }

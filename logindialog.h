@@ -18,6 +18,7 @@ public:
 
 signals:
     void LoggedIn();
+    void UserInfo(QString,QString,int);
 
 public slots:
     void reject();
@@ -32,6 +33,8 @@ private:
     QSettings *Setting;
     bool isReject;
     QTranslator Translator;
+    QString LoginName;
+    int LoginLevel;
 
     void closeEvent(QCloseEvent *event);
     void BgInit();

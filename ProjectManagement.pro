@@ -25,14 +25,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    logindialog.cpp
+    logindialog.cpp \
+    configuration_form.cpp \
+    main_form.cpp \
+    userregistration_form.cpp
 
 HEADERS  += mainwindow.h \
     logindialog.h \
-    define.h
+    define.h \
+    configuration_form.h \
+    main_form.h \
+    userregistration_form.h
 
 FORMS    += mainwindow.ui \
-    logindialog.ui
+    logindialog.ui \
+    configuration_form.ui \
+    main_form.ui \
+    userregistration_form.ui
 
 RESOURCES += \
     projectmanagement.qrc

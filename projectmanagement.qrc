@@ -4,5 +4,8 @@
         <file>img/projectmanagement.png</file>
         <file>translator/Lang_ko_KR.qm</file>
         <file>img/configuration.png</file>
+        <file>img/mainlogo.png</file>
+        <file>img/exit.png</file>
+        <file>img/main.png</file>
     </qresource>
 </RCC>

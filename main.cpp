@@ -15,6 +15,8 @@ int main(int argc, char *argv[])
     LoginDialog LoginDlg;
 
     QObject::connect(&LoginDlg,SIGNAL(LoggedIn()),&w,SLOT(show()));
+    QObject::connect(&LoginDlg,SIGNAL(LoggedIn()),&w,SLOT(TrayIconInit()));
+    QObject::connect(&LoginDlg,SIGNAL(UserInfo(QString,QString,int)),&w,SLOT(UserInfo(QString,QString,int)));
     LoginDlg.show();
     //w.show();
 
