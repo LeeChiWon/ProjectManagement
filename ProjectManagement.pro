@@ -55,4 +55,6 @@ win32
 
 TRANSLATIONS += Lang_ko_KR.ts
 
+DISTFILES +=
+
 

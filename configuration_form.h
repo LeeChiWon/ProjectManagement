@@ -28,6 +28,7 @@ private:
     void TabWidgetInit();
     void TreeWidgetInit();
     void SettingInit();
+    void AutoStartChecked(bool);
 };
 
 #endif // CONFIGURATION_FORM_H

@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     TabWidgetInit();
+    SettingInit();
 }
 
 MainWindow::~MainWindow()
@@ -71,6 +72,7 @@ void MainWindow::UserInfo(QString ID, QString Name, int Level)
     User=Name;
     ui->label_ID->setText(User);
     LoginLevel=Level;
+    LoginLevelCheck();
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -91,6 +93,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
             {
                 TrayIcon->hide();
             }
+            Setting->setValue("Configuration/Geometry",saveGeometry());
             break;
         default:
             return;
@@ -120,6 +123,17 @@ void MainWindow::TabWidgetInit()
     ui->tabWidget->addTab(new Main_Form,tr("Main"));
 }
 
+void MainWindow::LoginLevelCheck()
+{
+    switch(LoginLevel)
+    {
+    case LOGIN_MASTER:
+    case LOGIN_MANAGER:
+        ui->actionUserRegistration->setEnabled(true);
+        break;
+    }
+}
+
 void MainWindow::hideEvent(QHideEvent *event)
 {
     if(isMinimized())
@@ -133,4 +147,40 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
     ui->tabWidget->widget(index)->deleteLater();
     ui->tabWidget->removeTab(index);
+}
+
+void MainWindow::on_actionUserRegistration_triggered()
+{
+    if(!TabWidgetCompare(tr("UserRegistration")))
+    {
+        ui->tabWidget->addTab(new UserRegistration_Form,tr("UserRegistration"));
+        ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
+    }
+}
+
+void MainWindow::SettingInit()
+{
+    Setting=new QSettings("EachOne","ProjectManagement",this);
+    restoreGeometry(Setting->value("Configuration/Geometry").toByteArray());
+}
+
+void MainWindow::DBInit()
+{
+    QSqlDatabase DB=QSqlDatabase::addDatabase("QSQLITE","MainDB");
+    DB.setDatabaseName(Setting->value("Configuration/DBPath").toString());
+
+    try
+    {
+        if(!DB.open())
+        {
+            QMessageBox::warning(this,tr("Warning"),QString("%1\n%2").arg(tr("Database open error!"),DB.lastError().text()),QMessageBox::Ok);
+            QSqlDatabase::removeDatabase("MainDB");
+            return;
+        }
+    }
+    catch(QException &e)
+    {
+        QMessageBox::warning(this,tr("Warning"),QString("%1\n%2").arg(tr("Database Error!"),e.what()),QMessageBox::Ok);
+        QSqlDatabase::removeDatabase("MainDB");
+    }
 }

@@ -11,6 +11,7 @@ LoginDialog::LoginDialog(QWidget *parent) :
     setWindowFlags(Qt::FramelessWindowHint);//|Qt::WindowStaysOnTopHint);
     SettingInit();
     BgInit();
+    DBInit();
 }
 
 LoginDialog::~LoginDialog()
@@ -55,14 +56,28 @@ void LoginDialog::SplashScreen()
 
 void LoginDialog::on_pushButton_Login_clicked()
 {
+    if(ui->lineEdit_ID->text().isEmpty() || ui->lineEdit_ID->text().isNull() ||
+            ui->lineEdit_Password->text().isEmpty() || ui->lineEdit_Password->text().isNull())
+    {
+         QMessageBox::information(this,tr("Information"),tr("LineEdit is empty."),QMessageBox::Ok);
+         return;
+    }
+
     if(ui->lineEdit_ID->text()=="admin" && ui->lineEdit_Password->text()=="admin")
     {
         LoginName=tr("Master");
         LoginLevel=LOGIN_MASTER;
-        SplashScreen();        
     }
 
-
+    else
+    {
+        if(!IsCheckLogin())
+        {
+            QMessageBox::warning(this,tr("Warning"),tr("Check your ID/Password."),QMessageBox::Ok);
+            return;
+        }
+    }
+    SplashScreen();
 }
 
 void LoginDialog::closeEvent(QCloseEvent *event)
@@ -92,4 +107,80 @@ void LoginDialog::LoginShow()
     emit LoggedIn();
     emit UserInfo(ui->lineEdit_ID->text(),LoginName,LoginLevel);
     this->close();
+}
+
+void LoginDialog::DBInit()
+{
+    QSqlDatabase DB=QSqlDatabase::addDatabase("QSQLITE","MainDB");
+    if(Setting->value("Configuration/DBPath").toString().isEmpty()
+            || Setting->value("Configuration/DBPath").toString().isNull())
+    {
+        DB.setDatabaseName(QApplication::applicationDirPath()+"/ProjectManagement.db");
+    }
+
+    else
+    {
+        DB.setDatabaseName(Setting->value("Configuration/DBPath").toString());
+    }
+
+
+    try
+    {
+        if(!DB.open())
+        {
+            QMessageBox::warning(this,tr("Warning"),QString("%1\n%2").arg(tr("Database open error!"),DB.lastError().text()),QMessageBox::Ok);
+            QSqlDatabase::removeDatabase("MainDB");
+            return;
+        }
+
+        // CREATE TABLE "main_tb" ( `idx` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `date` TEXT, `content` TEXT, `separation` TEXT, `writer` TEXT )
+
+        QSqlQuery query(DB);
+        query.exec(QString("create table user_management (companynumber text not null primary key, name text not null, password text not null,"
+                           " joindate text not null, resigndate text, admin integer)"));
+        DB.close();
+    }
+    catch(QException &e)
+    {
+        QMessageBox::warning(this,tr("Warning"),QString("%1\n%2").arg(tr("Database Error!"),e.what()),QMessageBox::Ok);
+        QSqlDatabase::removeDatabase("MainDB");
+    }
+}
+
+bool LoginDialog::IsCheckLogin()
+{
+    QSqlDatabase DB=QSqlDatabase::database("MainDB");
+
+    try
+    {
+        if(!DB.isOpen())
+        {
+            //QMessageBox::warning(this,tr("Warning"),QString("%1\n%2").arg(tr("Database open error!"),DB.lastError().text()),QMessageBox::Ok);
+            QSqlDatabase::removeDatabase("MainDB");
+            DBInit();
+           // return false;
+        }
+
+        QSqlQuery query(DB);
+        query.exec(QString("select * from user_management where companynumber='%1' and password='%2'").arg(ui->lineEdit_ID->text(),ui->lineEdit_Password->text()));
+
+        if(query.next())
+        {
+            LoginName=query.value("name").toString();
+            LoginLevel=query.value("admin").toInt();
+            DB.close();
+        }
+        else
+        {
+            DB.close();
+            return false;
+        }
+    }
+    catch(QException &e)
+    {
+        QMessageBox::warning(this,tr("Warning"),QString("%1\n%2").arg(tr("Database Error!"),e.what()),QMessageBox::Ok);
+        QSqlDatabase::removeDatabase("MainDB");
+        return false;
+    }
+    return true;
 }

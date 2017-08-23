@@ -5,6 +5,7 @@
 #include <QtWidgets>
 #include "configuration_form.h"
 #include "main_form.h"
+#include "userregistration_form.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,6 +27,7 @@ private slots:
     void TrayIconInit();
     void UserInfo(QString,QString,int);
     void on_tabWidget_tabCloseRequested(int index);
+    void on_actionUserRegistration_triggered();
 
 protected:
     void hideEvent(QHideEvent *event);
@@ -38,10 +40,14 @@ private:
     QString LoginID;
     QString User;
     int LoginLevel;
+    QSettings *Setting;
 
     void closeEvent(QCloseEvent *event);   
     bool TabWidgetCompare(QString);
     void TabWidgetInit();
+    void LoginLevelCheck();
+    void DBInit();
+    void SettingInit();
 
 };
 

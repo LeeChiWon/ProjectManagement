@@ -40,6 +40,8 @@ private:
     void BgInit();
     void SettingInit();
     void SplashScreen();
+    void DBInit();
+    bool IsCheckLogin();
 };
 
 #endif // LOGINDIALOG_H

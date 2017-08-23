@@ -178,10 +178,16 @@
      <widget class="QTabWidget" name="tabWidget">
       <property name="font">
        <font>
-        <pointsize>9</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
+        <family>나눔고딕</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTabWidget{
+font: bold 10pt &quot;나눔고딕&quot;;}</string>
       </property>
       <property name="tabShape">
        <enum>QTabWidget::Triangular</enum>
@@ -358,6 +364,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionUserRegistration"/>
    <addaction name="actionConfiguration"/>
    <addaction name="actionExit"/>
   </widget>
@@ -400,6 +407,21 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionUserRegistration">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="projectmanagement.qrc">
+     <normaloff>:/img/user.png</normaloff>:/img/user.png</iconset>
+   </property>
+   <property name="text">
+    <string>UserRegistration</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+U</string>
    </property>
   </action>
  </widget>
