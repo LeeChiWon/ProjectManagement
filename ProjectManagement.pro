@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql xlsx
+QT       += core gui sql xlsx printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,20 +28,25 @@ SOURCES += main.cpp\
     logindialog.cpp \
     configuration_form.cpp \
     main_form.cpp \
-    userregistration_form.cpp
+    userregistration_form.cpp \
+    tableprinter.cpp \
+    projectinput_form.cpp
 
 HEADERS  += mainwindow.h \
     logindialog.h \
     define.h \
     configuration_form.h \
     main_form.h \
-    userregistration_form.h
+    userregistration_form.h \
+    tableprinter.h \
+    projectinput_form.h
 
 FORMS    += mainwindow.ui \
     logindialog.ui \
     configuration_form.ui \
     main_form.ui \
-    userregistration_form.ui
+    userregistration_form.ui \
+    projectinput_form.ui
 
 RESOURCES += \
     projectmanagement.qrc

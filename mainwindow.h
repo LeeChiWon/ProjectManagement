@@ -6,6 +6,7 @@
 #include "configuration_form.h"
 #include "main_form.h"
 #include "userregistration_form.h"
+#include "projectinput_form.h"
 
 namespace Ui {
 class MainWindow;
@@ -28,6 +29,7 @@ private slots:
     void UserInfo(QString,QString,int);
     void on_tabWidget_tabCloseRequested(int index);
     void on_actionUserRegistration_triggered();
+    void on_actionProjectInput_triggered();
 
 protected:
     void hideEvent(QHideEvent *event);

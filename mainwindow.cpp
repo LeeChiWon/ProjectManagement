@@ -184,3 +184,12 @@ void MainWindow::DBInit()
         QSqlDatabase::removeDatabase("MainDB");
     }
 }
+
+void MainWindow::on_actionProjectInput_triggered()
+{
+    if(!TabWidgetCompare(tr("ProjectInput")))
+    {
+        ui->tabWidget->addTab(new ProjectInput_Form,tr("ProjectInput"));
+        ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
+    }
+}

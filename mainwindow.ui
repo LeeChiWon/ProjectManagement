@@ -365,6 +365,7 @@ font: bold 10pt &quot;나눔고딕&quot;;}</string>
     <bool>false</bool>
    </attribute>
    <addaction name="actionUserRegistration"/>
+   <addaction name="actionProjectInput"/>
    <addaction name="actionConfiguration"/>
    <addaction name="actionExit"/>
   </widget>
@@ -422,6 +423,18 @@ font: bold 10pt &quot;나눔고딕&quot;;}</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+U</string>
+   </property>
+  </action>
+  <action name="actionProjectInput">
+   <property name="icon">
+    <iconset resource="projectmanagement.qrc">
+     <normaloff>:/img/projectinput.png</normaloff>:/img/projectinput.png</iconset>
+   </property>
+   <property name="text">
+    <string>ProjectInput</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
    </property>
   </action>
  </widget>

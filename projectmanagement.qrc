@@ -8,5 +8,9 @@
         <file>img/exit.png</file>
         <file>img/main.png</file>
         <file>img/user.png</file>
+        <file>img/excel.png</file>
+        <file>img/printer.png</file>
+        <file>img/projectinput.png</file>
+        <file>img/projectsearch.png</file>
     </qresource>
 </RCC>

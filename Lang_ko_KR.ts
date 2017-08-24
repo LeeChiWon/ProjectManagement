@@ -179,38 +179,50 @@
         <translation>아이디</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="394"/>
+        <location filename="mainwindow.ui" line="395"/>
         <location filename="mainwindow.cpp" line="29"/>
         <location filename="mainwindow.cpp" line="31"/>
         <source>Configuration</source>
         <translation>환경설정</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="397"/>
+        <location filename="mainwindow.ui" line="398"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="406"/>
+        <location filename="mainwindow.ui" line="407"/>
         <source>Exit</source>
         <translation>종료</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="409"/>
+        <location filename="mainwindow.ui" line="410"/>
         <source>Ctrl+X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="421"/>
+        <location filename="mainwindow.ui" line="422"/>
         <location filename="mainwindow.cpp" line="154"/>
         <location filename="mainwindow.cpp" line="156"/>
         <source>UserRegistration</source>
         <translation>사용자관리</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="424"/>
+        <location filename="mainwindow.ui" line="425"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="434"/>
+        <location filename="mainwindow.cpp" line="190"/>
+        <location filename="mainwindow.cpp" line="192"/>
+        <source>ProjectInput</source>
+        <translation>정산과제입력</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="437"/>
+        <source>Ctrl+I</source>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="65"/>
@@ -253,122 +265,212 @@
     </message>
 </context>
 <context>
+    <name>ProjectInput_Form</name>
+    <message>
+        <location filename="projectinput_form.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UserRegistration_Form</name>
     <message>
-        <location filename="userregistration_form.ui" line="78"/>
+        <location filename="userregistration_form.ui" line="81"/>
         <source>UserRegistration</source>
         <translation>사용자관리</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="121"/>
+        <location filename="userregistration_form.ui" line="127"/>
+        <location filename="userregistration_form.ui" line="149"/>
+        <source>Search</source>
+        <translation>검색</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.ui" line="189"/>
         <source>User Registration</source>
         <translation>사용자 관리</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="142"/>
-        <location filename="userregistration_form.cpp" line="122"/>
+        <location filename="userregistration_form.ui" line="210"/>
+        <location filename="userregistration_form.cpp" line="149"/>
+        <location filename="userregistration_form.cpp" line="276"/>
+        <location filename="userregistration_form.cpp" line="326"/>
         <source>Name</source>
         <translation>이름</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="338"/>
+        <location filename="userregistration_form.ui" line="406"/>
         <source>CompanyNum</source>
         <translation>사번</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="437"/>
-        <location filename="userregistration_form.cpp" line="122"/>
+        <location filename="userregistration_form.ui" line="505"/>
+        <location filename="userregistration_form.cpp" line="149"/>
+        <location filename="userregistration_form.cpp" line="326"/>
         <source>JoinDate</source>
         <translation>입사일</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="536"/>
-        <location filename="userregistration_form.cpp" line="122"/>
+        <location filename="userregistration_form.ui" line="604"/>
+        <location filename="userregistration_form.cpp" line="149"/>
+        <location filename="userregistration_form.cpp" line="326"/>
         <source>ResignDate</source>
         <translation>퇴사일</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="596"/>
-        <location filename="userregistration_form.ui" line="681"/>
-        <location filename="userregistration_form.ui" line="731"/>
-        <location filename="userregistration_form.ui" line="909"/>
+        <location filename="userregistration_form.ui" line="664"/>
+        <location filename="userregistration_form.ui" line="749"/>
+        <location filename="userregistration_form.ui" line="799"/>
         <source>Essential</source>
         <translation>필수</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="618"/>
-        <location filename="userregistration_form.cpp" line="122"/>
+        <location filename="userregistration_form.ui" line="686"/>
+        <location filename="userregistration_form.cpp" line="149"/>
+        <location filename="userregistration_form.cpp" line="326"/>
         <source>Admin</source>
         <translation>관리자 여부</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="631"/>
+        <location filename="userregistration_form.ui" line="699"/>
         <source>Add</source>
         <translation>추가</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="744"/>
+        <location filename="userregistration_form.ui" line="815"/>
         <source>Modify</source>
         <translation>수정</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="757"/>
+        <location filename="userregistration_form.ui" line="831"/>
         <source>Delete</source>
         <translation>삭제</translation>
     </message>
     <message>
-        <location filename="userregistration_form.ui" line="859"/>
         <source>Password</source>
-        <translation>암호</translation>
+        <translation type="vanished">암호</translation>
     </message>
     <message>
-        <location filename="userregistration_form.cpp" line="23"/>
-        <location filename="userregistration_form.cpp" line="30"/>
+        <location filename="userregistration_form.cpp" line="38"/>
+        <location filename="userregistration_form.cpp" line="51"/>
+        <location filename="userregistration_form.cpp" line="64"/>
+        <location filename="userregistration_form.cpp" line="267"/>
         <source>Information</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="userregistration_form.cpp" line="23"/>
+        <location filename="userregistration_form.cpp" line="267"/>
         <source>LineEdit is Empty.</source>
         <translation>필수입력에 빈칸이 있습니다.</translation>
     </message>
     <message>
-        <location filename="userregistration_form.cpp" line="30"/>
+        <location filename="userregistration_form.cpp" line="38"/>
         <source>User Add</source>
-        <translation>사용자가 추가완료</translation>
+        <translation>사용자 추가완료</translation>
     </message>
     <message>
-        <location filename="userregistration_form.cpp" line="53"/>
-        <location filename="userregistration_form.cpp" line="60"/>
-        <location filename="userregistration_form.cpp" line="114"/>
-        <location filename="userregistration_form.cpp" line="147"/>
-        <location filename="userregistration_form.cpp" line="150"/>
-        <location filename="userregistration_form.cpp" line="160"/>
+        <location filename="userregistration_form.cpp" line="51"/>
+        <source>User Modify</source>
+        <translation>사용자 수정완료</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="64"/>
+        <source>User Delete</source>
+        <translation>사용자 삭제완료</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="78"/>
+        <location filename="userregistration_form.cpp" line="85"/>
+        <location filename="userregistration_form.cpp" line="140"/>
+        <location filename="userregistration_form.cpp" line="174"/>
+        <location filename="userregistration_form.cpp" line="177"/>
+        <location filename="userregistration_form.cpp" line="187"/>
+        <location filename="userregistration_form.cpp" line="216"/>
+        <location filename="userregistration_form.cpp" line="244"/>
+        <location filename="userregistration_form.cpp" line="380"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="userregistration_form.cpp" line="53"/>
+        <location filename="userregistration_form.cpp" line="78"/>
         <source>Database open error!</source>
         <translation>데이터베이스 열기 에러!</translation>
     </message>
     <message>
-        <location filename="userregistration_form.cpp" line="60"/>
-        <location filename="userregistration_form.cpp" line="114"/>
-        <location filename="userregistration_form.cpp" line="150"/>
-        <location filename="userregistration_form.cpp" line="160"/>
+        <location filename="userregistration_form.cpp" line="85"/>
+        <location filename="userregistration_form.cpp" line="140"/>
+        <location filename="userregistration_form.cpp" line="177"/>
+        <location filename="userregistration_form.cpp" line="187"/>
+        <location filename="userregistration_form.cpp" line="216"/>
+        <location filename="userregistration_form.cpp" line="244"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
     </message>
     <message>
-        <location filename="userregistration_form.cpp" line="122"/>
+        <location filename="userregistration_form.cpp" line="149"/>
         <source>Companynumber</source>
         <translation>사번</translation>
     </message>
     <message>
-        <location filename="userregistration_form.cpp" line="147"/>
+        <location filename="userregistration_form.cpp" line="174"/>
         <source>CompanyNumber is depulicate.</source>
         <translation>같은 사번이 존재합니다.</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="276"/>
+        <location filename="userregistration_form.cpp" line="326"/>
+        <source>CompanyNumber</source>
+        <translation>사번</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="284"/>
+        <source>ExcelSave</source>
+        <translation>엑셀저장</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="286"/>
+        <source>Print</source>
+        <translation>인쇄</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="313"/>
+        <source>Search Result</source>
+        <translation>검색 결과</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="313"/>
+        <source>Search Item.</source>
+        <translation>찾았습니다.</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="321"/>
+        <source>Save File</source>
+        <translation>파일 저장</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="321"/>
+        <source>Excel (*.xlsx)</source>
+        <translation>Excel (*.xlsx)</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="354"/>
+        <source>Save</source>
+        <translation>저장</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="354"/>
+        <source>Excel File is Saved.</source>
+        <translation>엑셀파일이 저장되었습니다.</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="380"/>
+        <source>can&apos;t start printer</source>
+        <translation>인쇄를 할 수 없습니다</translation>
+    </message>
+    <message>
+        <location filename="userregistration_form.cpp" line="387"/>
+        <source>Error</source>
+        <translation>에러</translation>
     </message>
 </context>
 </TS>
