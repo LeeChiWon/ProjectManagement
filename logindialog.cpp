@@ -136,8 +136,11 @@ void LoginDialog::DBInit()
         // CREATE TABLE "main_tb" ( `idx` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `date` TEXT, `content` TEXT, `separation` TEXT, `writer` TEXT )
 
         QSqlQuery query(DB);
-        query.exec(QString("create table user_management (companynumber text not null primary key, name text not null, password text not null,"
+        query.exec(QString("create table if not exists user_management (companynumber text not null primary key, name text not null, password text not null,"
                            " joindate text not null, resigndate text, admin integer)"));
+        query.exec(QString("create table if not exists project_management (businesstype text, projectnumber text, managementagency text, businessgroup1 text, businessgroup2 text,businessgroup3 text,"
+                           "organization text, manager text, projectname text not null primary key, agreementstartdate text, agreementenddate text, contribution text,lardaceousspleen text,"
+                           "deductible_cash text, deductible_goods text, projectcost text, totalprojectcost text, carriedcost text)"));
         DB.close();
     }
     catch(QException &e)

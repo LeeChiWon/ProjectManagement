@@ -3,10 +3,6 @@
 
 #include <QWidget>
 #include "define.h"
-#include <QtXlsx>
-#include <QtPrintSupport/QPrinter>
-#include <QtPrintSupport/QPrintDialog>
-#include <QtPrintSupport/QPrintPreviewDialog>
 #include "tableprinter.h"
 
 namespace Ui {

@@ -12,5 +12,6 @@
         <file>img/printer.png</file>
         <file>img/projectinput.png</file>
         <file>img/projectsearch.png</file>
+        <file>img/save.png</file>
     </qresource>
 </RCC>

@@ -130,6 +130,7 @@ void MainWindow::LoginLevelCheck()
     case LOGIN_MASTER:
     case LOGIN_MANAGER:
         ui->actionUserRegistration->setEnabled(true);
+        ui->actionProjectInput->setEnabled(true);
         break;
     }
 }

@@ -131,8 +131,8 @@
     <message>
         <location filename="logindialog.cpp" line="76"/>
         <location filename="logindialog.cpp" line="131"/>
-        <location filename="logindialog.cpp" line="145"/>
-        <location filename="logindialog.cpp" line="181"/>
+        <location filename="logindialog.cpp" line="148"/>
+        <location filename="logindialog.cpp" line="184"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
@@ -147,8 +147,8 @@
         <translation>데이터베이스 열기 에러!</translation>
     </message>
     <message>
-        <location filename="logindialog.cpp" line="145"/>
-        <location filename="logindialog.cpp" line="181"/>
+        <location filename="logindialog.cpp" line="148"/>
+        <location filename="logindialog.cpp" line="184"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
     </message>
@@ -202,8 +202,8 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="422"/>
-        <location filename="mainwindow.cpp" line="154"/>
-        <location filename="mainwindow.cpp" line="156"/>
+        <location filename="mainwindow.cpp" line="155"/>
+        <location filename="mainwindow.cpp" line="157"/>
         <source>UserRegistration</source>
         <translation>사용자관리</translation>
     </message>
@@ -213,14 +213,14 @@
         <translation>Ctrl+U</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="434"/>
-        <location filename="mainwindow.cpp" line="190"/>
-        <location filename="mainwindow.cpp" line="192"/>
+        <location filename="mainwindow.ui" line="437"/>
+        <location filename="mainwindow.cpp" line="191"/>
+        <location filename="mainwindow.cpp" line="193"/>
         <source>ProjectInput</source>
         <translation>정산과제입력</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="437"/>
+        <location filename="mainwindow.ui" line="440"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
@@ -240,18 +240,18 @@
         <translation>어플리케이션을 종료하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="176"/>
-        <location filename="mainwindow.cpp" line="183"/>
+        <location filename="mainwindow.cpp" line="177"/>
+        <location filename="mainwindow.cpp" line="184"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="176"/>
+        <location filename="mainwindow.cpp" line="177"/>
         <source>Database open error!</source>
         <translation>데이터베이스 열기 에러!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="183"/>
+        <location filename="mainwindow.cpp" line="184"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
     </message>
@@ -267,9 +267,170 @@
 <context>
     <name>ProjectInput_Form</name>
     <message>
-        <location filename="projectinput_form.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">환경설정</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="14"/>
+        <source>ProjectInput</source>
+        <translation>정산과제입력</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="34"/>
+        <source>Save</source>
+        <translation>저장</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="63"/>
+        <source>Upload</source>
+        <translation>업로드</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="115"/>
+        <location filename="projectinput_form.ui" line="2061"/>
+        <location filename="projectinput_form.ui" line="2086"/>
+        <location filename="projectinput_form.ui" line="2111"/>
+        <location filename="projectinput_form.ui" line="2136"/>
+        <location filename="projectinput_form.ui" line="2161"/>
+        <location filename="projectinput_form.ui" line="2186"/>
+        <source>\</source>
+        <translation>원</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="305"/>
+        <source>Organization</source>
+        <translation>수행기관명</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="413"/>
+        <source>AgreementStartDate</source>
+        <translation>협약기간시간날짜</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="508"/>
+        <source>Deductible(Goods)</source>
+        <translation>자부담(현물)</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="613"/>
+        <source>BusinessGroup3</source>
+        <translation>사업분류(소분류)</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="801"/>
+        <source>ProjectCost</source>
+        <translation>현금사업비</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="906"/>
+        <source>Deductible(Cash)</source>
+        <translation>자부담(현금)</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="1004"/>
+        <source>ManagementAgency</source>
+        <translation>관리기관명</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="1099"/>
+        <source>BusinessGroup2</source>
+        <translation>사업분류(중분류)</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="1217"/>
+        <source>BusinessGroup1</source>
+        <translation>사업분류(대분류)</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="1407"/>
+        <source>ProjectNumber</source>
+        <translation>과제번호</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="1502"/>
+        <source>AgreementEndDate</source>
+        <translation>협약기간종료날짜</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="1597"/>
+        <source>BusinessType</source>
+        <translation>사업종류</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="1718"/>
+        <source>Manager</source>
+        <translation>책임자명</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="1823"/>
+        <source>TotalProjectCost</source>
+        <translation>총사업비</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="1931"/>
+        <source>Contribution</source>
+        <translation>정부출연금</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="2036"/>
+        <source>LardaceousSpleen</source>
+        <translation>지방비부담금</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="1312"/>
+        <source>CarriedCost</source>
+        <translation>이월사업비</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.ui" line="210"/>
+        <source>ProjectName</source>
+        <translation>과제명</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.cpp" line="27"/>
+        <location filename="projectinput_form.cpp" line="39"/>
+        <source>Information</source>
+        <translation>정보</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.cpp" line="27"/>
+        <source>ProjectInput Saved.</source>
+        <translation>과제입력이 저장되었습니다.</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.cpp" line="39"/>
+        <source>LineEdit is Empty.</source>
+        <translation>빈칸이 있습니다.</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.cpp" line="81"/>
+        <location filename="projectinput_form.cpp" line="88"/>
+        <location filename="projectinput_form.cpp" line="125"/>
+        <location filename="projectinput_form.cpp" line="128"/>
+        <location filename="projectinput_form.cpp" line="138"/>
+        <source>Warning</source>
+        <translation>경고</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.cpp" line="81"/>
+        <source>Database open error!</source>
+        <translation>데이터베이스 열기 에러!</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.cpp" line="88"/>
+        <location filename="projectinput_form.cpp" line="128"/>
+        <location filename="projectinput_form.cpp" line="138"/>
+        <source>Database Error!</source>
+        <translation>데이터베이스 에러!</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.cpp" line="125"/>
+        <source>ProjectName is depulicate.</source>
+        <translation>같은 과제명이 존재합니다.</translation>
+    </message>
+    <message>
+        <source>CompanyNumber is depulicate.</source>
+        <translation type="obsolete">같은 사번이 존재합니다.</translation>
     </message>
 </context>
 <context>

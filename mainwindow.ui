@@ -426,6 +426,9 @@ font: bold 10pt &quot;나눔고딕&quot;;}</string>
    </property>
   </action>
   <action name="actionProjectInput">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="projectmanagement.qrc">
      <normaloff>:/img/projectinput.png</normaloff>:/img/projectinput.png</iconset>
