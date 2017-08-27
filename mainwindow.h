@@ -7,6 +7,7 @@
 #include "main_form.h"
 #include "userregistration_form.h"
 #include "projectinput_form.h"
+#include "projectsearch_form.h"
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +31,7 @@ private slots:
     void on_tabWidget_tabCloseRequested(int index);
     void on_actionUserRegistration_triggered();
     void on_actionProjectInput_triggered();
+    void on_actionProjectSearch_triggered();
 
 protected:
     void hideEvent(QHideEvent *event);

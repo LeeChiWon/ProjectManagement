@@ -49,27 +49,34 @@ bool ProjectInput_Form::isEditEmpty()
 
 bool ProjectInput_Form::ExcelUpload(QString FileName)
 {
+    int Count=2;
+    qDebug()<<FileName;
     QXlsx::Document xlsx(FileName);
     QString Temp;
+    QXlsx::Format lAlign;
+    lAlign.setHorizontalAlignment(QXlsx::Format::AlignLeft);
+    xlsx.write("S1","=COUNTA(A1:A200)",lAlign);
 
-    xlsx.write("S1","=COUNT(A1:A200)");
-
-    for(int i=0; i<xlsx.read("S1").toInt(); i++)
+    while(1)
     {
+        if(xlsx.read(QString("A%1").arg(Count)).isNull())
+        {
+            break;
+        }
         for(int j=0; j<18; j++)
         {
             if(j==17)
             {
-                Temp.append("'"+xlsx.read(i+2,j+1).toString()+"'");
+                Temp.append("'"+xlsx.read(Count,j+1).toString()+"'");
                 break;
             }
-            Temp.append("'"+xlsx.read(i+2,j+1).toString()+"',");
+            Temp.append("'"+xlsx.read(Count,j+1).toString()+"',");
         }
 
         Input(Temp);
         Temp.clear();
+        Count++;
     }
-
     xlsx.deleteLater();
     return true;
 }
@@ -145,7 +152,7 @@ bool ProjectInput_Form::Input(QString Values)
 
         query.exec(QString("insert into project_management(businesstype, projectnumber, managementagency, businessgroup1, businessgroup2, businessgroup3,"
                            "organization, manager, projectname, agreementstartdate, agreementenddate, contribution,lardaceousspleen,"
-                           "deductible_cash, deductible_goods, projectcost, totalprojectcost, carriedcost) values ('%1')").arg(Values));
+                           "deductible_cash, deductible_goods, projectcost, totalprojectcost, carriedcost) values (%1)").arg(Values));
 
         if(query.lastError().number()>0)
         {

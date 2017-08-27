@@ -121,13 +121,13 @@ void UserRegistration_Form::UserShow()
             ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,COLUMN_JOINDATE,new QTableWidgetItem(query.value("joindate").toString()));
             ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,COLUMN_RESIGNDATE,new QTableWidgetItem(query.value("resigndate").toString()));
             ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,COLUMN_ADMIN,new QTableWidgetItem(query.value("admin").toString()));
-            if(ui->tableWidget->rowCount()%2==0)
+           /* if(ui->tableWidget->rowCount()%2==0)
             {
                 for(int i=0; i<ui->tableWidget->columnCount(); i++)
                 {
                     ui->tableWidget->item(ui->tableWidget->rowCount()-1,i)->setBackgroundColor(qRgb(255,255,127));
                 }
-            }
+            }*/
         }
 
         ui->tableWidget->resizeColumnsToContents();

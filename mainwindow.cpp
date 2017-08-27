@@ -194,3 +194,12 @@ void MainWindow::on_actionProjectInput_triggered()
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
     }
 }
+
+void MainWindow::on_actionProjectSearch_triggered()
+{
+    if(!TabWidgetCompare(tr("ProjectSearch")))
+    {
+        ui->tabWidget->addTab(new ProjectSearch_Form,tr("ProjectSearch"));
+        ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
+    }
+}

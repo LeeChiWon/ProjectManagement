@@ -140,7 +140,10 @@ void LoginDialog::DBInit()
                            " joindate text not null, resigndate text, admin integer)"));
         query.exec(QString("create table if not exists project_management (businesstype text, projectnumber text, managementagency text, businessgroup1 text, businessgroup2 text,businessgroup3 text,"
                            "organization text, manager text, projectname text not null primary key, agreementstartdate text, agreementenddate text, contribution text,lardaceousspleen text,"
-                           "deductible_cash text, deductible_goods text, projectcost text, totalprojectcost text, carriedcost text)"));
+                           "deductible_cash text, deductible_goods text, projectcost text, totalprojectcost text, carriedcost text,"
+                           "projectstate text, projectstatedate text, execution_cach text, execution_goods text, executionbalance text, appearinterest text,interestuse text,"
+                           "interestbalance text, carriedexecution text, carriedbusiness text, recognition text, governmentsubsidy text, return text,accountperson text,"
+                           "attach1 text,attach2 text,attach3 text,attach4 text,attach5 text)"));
         DB.close();
     }
     catch(QException &e)

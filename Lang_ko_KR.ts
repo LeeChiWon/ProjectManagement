@@ -387,44 +387,60 @@
         <translation>과제명</translation>
     </message>
     <message>
-        <location filename="projectinput_form.cpp" line="27"/>
-        <location filename="projectinput_form.cpp" line="39"/>
+        <location filename="projectinput_form.cpp" line="32"/>
+        <location filename="projectinput_form.cpp" line="44"/>
+        <location filename="projectinput_form.cpp" line="88"/>
         <source>Information</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="projectinput_form.cpp" line="27"/>
+        <location filename="projectinput_form.cpp" line="32"/>
         <source>ProjectInput Saved.</source>
         <translation>과제입력이 저장되었습니다.</translation>
     </message>
     <message>
-        <location filename="projectinput_form.cpp" line="39"/>
+        <location filename="projectinput_form.cpp" line="44"/>
         <source>LineEdit is Empty.</source>
         <translation>빈칸이 있습니다.</translation>
     </message>
     <message>
-        <location filename="projectinput_form.cpp" line="81"/>
+        <location filename="projectinput_form.cpp" line="86"/>
+        <source>Open Excel File</source>
+        <translation>엑셀 파일 열기</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.cpp" line="86"/>
+        <source>Excel (*.xlsx)</source>
+        <translation>Excel (*.xlsx)</translation>
+    </message>
+    <message>
         <location filename="projectinput_form.cpp" line="88"/>
-        <location filename="projectinput_form.cpp" line="125"/>
-        <location filename="projectinput_form.cpp" line="128"/>
-        <location filename="projectinput_form.cpp" line="138"/>
+        <source>Excel Upload Complete.</source>
+        <translation>엑셀 파일의 내용 업로드 완료.</translation>
+    </message>
+    <message>
+        <location filename="projectinput_form.cpp" line="123"/>
+        <location filename="projectinput_form.cpp" line="130"/>
+        <location filename="projectinput_form.cpp" line="162"/>
+        <location filename="projectinput_form.cpp" line="165"/>
+        <location filename="projectinput_form.cpp" line="175"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="projectinput_form.cpp" line="81"/>
+        <location filename="projectinput_form.cpp" line="123"/>
         <source>Database open error!</source>
         <translation>데이터베이스 열기 에러!</translation>
     </message>
     <message>
-        <location filename="projectinput_form.cpp" line="88"/>
-        <location filename="projectinput_form.cpp" line="128"/>
-        <location filename="projectinput_form.cpp" line="138"/>
+        <location filename="projectinput_form.cpp" line="130"/>
+        <location filename="projectinput_form.cpp" line="165"/>
+        <location filename="projectinput_form.cpp" line="175"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
     </message>
     <message>
-        <location filename="projectinput_form.cpp" line="125"/>
+        <location filename="projectinput_form.cpp" line="162"/>
         <source>ProjectName is depulicate.</source>
         <translation>같은 과제명이 존재합니다.</translation>
     </message>
