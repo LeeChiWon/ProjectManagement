@@ -148,6 +148,10 @@
       <property name="text">
        <string>Search</string>
       </property>
+      <property name="icon">
+       <iconset resource="projectmanagement.qrc">
+        <normaloff>:/img/Search.png</normaloff>:/img/Search.png</iconset>
+      </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_Search">
       <property name="geometry">
@@ -698,6 +702,10 @@
       <property name="text">
        <string>Add</string>
       </property>
+      <property name="icon">
+       <iconset resource="projectmanagement.qrc">
+        <normaloff>:/img/add.png</normaloff>:/img/add.png</iconset>
+      </property>
      </widget>
      <widget class="QLabel" name="label_6">
       <property name="geometry">
@@ -814,6 +822,10 @@
       <property name="text">
        <string>Modify</string>
       </property>
+      <property name="icon">
+       <iconset resource="projectmanagement.qrc">
+        <normaloff>:/img/modify.png</normaloff>:/img/modify.png</iconset>
+      </property>
      </widget>
      <widget class="QPushButton" name="pushButton_Delete">
       <property name="enabled">
@@ -829,6 +841,10 @@
       </property>
       <property name="text">
        <string>Delete</string>
+      </property>
+      <property name="icon">
+       <iconset resource="projectmanagement.qrc">
+        <normaloff>:/img/delete.png</normaloff>:/img/delete.png</iconset>
       </property>
      </widget>
     </widget>
@@ -875,6 +891,8 @@
   <tabstop>pushButton_Delete</tabstop>
   <tabstop>tableWidget</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="projectmanagement.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -13,5 +13,9 @@
         <file>img/projectinput.png</file>
         <file>img/projectsearch.png</file>
         <file>img/save.png</file>
+        <file>img/add.png</file>
+        <file>img/delete.png</file>
+        <file>img/modify.png</file>
+        <file>img/Search.png</file>
     </qresource>
 </RCC>
