@@ -76,6 +76,11 @@ void LoginDialog::on_pushButton_Login_clicked()
             QMessageBox::warning(this,tr("Warning"),tr("Check your ID/Password."),QMessageBox::Ok);
             return;
         }
+        if(ResignDate.isEmpty() || ResignDate.isNull())
+        {
+            QMessageBox::warning(this,tr("Warning"),tr("Resign ID."),QMessageBox::Ok);
+            return;
+        }
     }
     SplashScreen();
 }
@@ -137,11 +142,11 @@ void LoginDialog::DBInit()
 
         QSqlQuery query(DB);
         query.exec(QString("create table if not exists user_management (companynumber text not null primary key, name text not null, password text not null,"
-                           " joindate text not null, resigndate text, admin integer)"));
+                           " joindate date not null, resigndate date, admin integer)"));
         query.exec(QString("create table if not exists project_management (businesstype text, projectnumber text, managementagency text, businessgroup1 text, businessgroup2 text,businessgroup3 text,"
-                           "organization text, manager text, projectname text not null primary key, agreementstartdate text, agreementenddate text, contribution text,lardaceousspleen text,"
+                           "organization text, manager text, projectname text not null primary key, agreementstartdate date, agreementenddate date, contribution text,lardaceousspleen text,"
                            "deductible_cash text, deductible_goods text, projectcost text, totalprojectcost text, carriedcost text,"
-                           "projectstate text, projectstatedate text, execution_cach text, execution_goods text, executionbalance text, appearinterest text,interestuse text,"
+                           "projectstate text, receiptdate date, accountsnotifydate date, accountscompletedate date, execution_cach text, execution_goods text, executionbalance text, appearinterest text,interestuse text,"
                            "interestbalance text, carriedexecution text, carriedbusiness text, recognition text, governmentsubsidy text, return text,accountperson text,"
                            "attach1 text,attach2 text,attach3 text,attach4 text,attach5 text)"));
         DB.close();
@@ -174,6 +179,7 @@ bool LoginDialog::IsCheckLogin()
         {
             LoginName=query.value("name").toString();
             LoginLevel=query.value("admin").toInt();
+            ResignDate=query.value("resigndate").toString();
             DB.close();
         }
         else

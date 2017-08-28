@@ -17,5 +17,6 @@
         <file>img/delete.png</file>
         <file>img/modify.png</file>
         <file>img/Search.png</file>
+        <file>img/write.png</file>
     </qresource>
 </RCC>

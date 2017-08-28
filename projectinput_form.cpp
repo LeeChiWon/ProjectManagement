@@ -50,7 +50,6 @@ bool ProjectInput_Form::isEditEmpty()
 bool ProjectInput_Form::ExcelUpload(QString FileName)
 {
     int Count=2;
-    qDebug()<<FileName;
     QXlsx::Document xlsx(FileName);
     QString Temp;
     QXlsx::Format lAlign;
@@ -66,11 +65,18 @@ bool ProjectInput_Form::ExcelUpload(QString FileName)
         for(int j=0; j<18; j++)
         {
             if(j==17)
-            {
+            {                
                 Temp.append("'"+xlsx.read(Count,j+1).toString()+"'");
                 break;
             }
-            Temp.append("'"+xlsx.read(Count,j+1).toString()+"',");
+            else if(j>10)
+            {
+                Temp.append(QString("'%1',").arg(xlsx.read(Count,j+1).toInt()));
+            }
+            else
+            {
+                Temp.append("'"+xlsx.read(Count,j+1).toString()+"',");
+            }
         }
 
         Input(Temp);

@@ -10,18 +10,35 @@
 #include <QtPrintSupport/QPrintDialog>
 #include <QtPrintSupport/QPrintPreviewDialog>
 
-#define LOGIN_USER 0
-#define LOGIN_MANAGER 1
-#define LOGIN_MASTER 2
+enum UserLevel
+{
+    LOGIN_USER, LOGIN_MANAGER, LOGIN_MASTER
+};
 
-#define MODE_LOGOUT 1
-#define MODE_EXIT 2
+enum LogMode
+{
+   MODE_LOGOUT=1, MODE_EXIT=2,
+};
 
-#define COLUMN_COMPANYNUMBER 0
-#define COLUMN_NAME 1
-#define COLUMN_JOINDATE 2
-#define COLUMN_RESIGNDATE 3
-#define COLUMN_ADMIN 4
+enum Project_UserManagement_Column
+{
+   COLUMN_COMPANYNUMBER, COLUMN_NAME, COLUMN_JOINDATE, COLUMN_RESIGNDATE, COLUMN_ADMIN
+};
 
-#define DB_ERROR_INSERT_PRIMARYKEY 19
+enum QueryCommand
+{
+    INIT, SEARCH, DEL
+};
+
+enum Project_Management_Column
+{
+    BUSINESSTYPE,PROJECTNUMBER,MANAGEMENTAGENCY,BUSINESSGROUP1,BUSINESSGROUP2,BUSINESSGROUP3,ORGANIZATION,MANAGER,PROJECTNAME
+};
+enum DBErrorList
+{
+    DB_ERROR_INSERT_PRIMARYKEY=19
+};
+
+extern int g_LoginLevel;
+
 #endif // DEFINE_H

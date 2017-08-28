@@ -35,6 +35,7 @@ private:
     QTranslator Translator;
     QString LoginName;
     int LoginLevel;
+    QString ResignDate;
 
     void closeEvent(QCloseEvent *event);
     void BgInit();

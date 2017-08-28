@@ -509,83 +509,6 @@
        <string>JoinDate</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_JoinDate">
-      <property name="geometry">
-       <rect>
-        <x>102</x>
-        <y>78</y>
-        <width>113</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="palette">
-       <palette>
-        <active>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>127</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </active>
-        <inactive>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>127</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </inactive>
-        <disabled>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </disabled>
-       </palette>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
@@ -606,16 +529,6 @@
       </property>
       <property name="text">
        <string>ResignDate</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_ResignDate">
-      <property name="geometry">
-       <rect>
-        <x>102</x>
-        <y>102</y>
-        <width>113</width>
-        <height>20</height>
-       </rect>
       </property>
      </widget>
      <widget class="QLabel" name="label_5">
@@ -847,6 +760,39 @@
         <normaloff>:/img/delete.png</normaloff>:/img/delete.png</iconset>
       </property>
      </widget>
+     <widget class="QDateEdit" name="dateEdit_JoinDate">
+      <property name="geometry">
+       <rect>
+        <x>103</x>
+        <y>78</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 127);</string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateEdit_ResignDate">
+      <property name="geometry">
+       <rect>
+        <x>103</x>
+        <y>102</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="date">
+       <date>
+        <year>3641</year>
+        <month>1</month>
+        <day>1</day>
+       </date>
+      </property>
+     </widget>
     </widget>
    </item>
    <item row="0" column="3">
@@ -883,8 +829,6 @@
  <tabstops>
   <tabstop>lineEdit_Name</tabstop>
   <tabstop>lineEdit_CompanyNum</tabstop>
-  <tabstop>lineEdit_JoinDate</tabstop>
-  <tabstop>lineEdit_ResignDate</tabstop>
   <tabstop>checkBox_Admin</tabstop>
   <tabstop>pushButton_Add</tabstop>
   <tabstop>pushButton_Modify</tabstop>

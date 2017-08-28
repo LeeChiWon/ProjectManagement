@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "define.h"
 
+int g_LoginLevel;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -71,7 +73,7 @@ void MainWindow::UserInfo(QString ID, QString Name, int Level)
     LoginID=ID;
     User=Name;
     ui->label_ID->setText(User);
-    LoginLevel=Level;
+    g_LoginLevel=LoginLevel=Level;
     LoginLevelCheck();
 }
 

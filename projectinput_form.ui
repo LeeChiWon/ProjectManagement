@@ -685,7 +685,14 @@
       </widget>
      </item>
      <item row="1" column="3" colspan="2">
-      <widget class="QDateEdit" name="dateEdit_AgreementEnd"/>
+      <widget class="QDateEdit" name="dateEdit_AgreementEnd">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
      </item>
      <item row="4" column="1">
       <widget class="QLineEdit" name="lineEdit_BusinessGroup2">
@@ -908,7 +915,20 @@
       </widget>
      </item>
      <item row="0" column="3" colspan="2">
-      <widget class="QDateEdit" name="dateEdit_AgreementStart"/>
+      <widget class="QDateEdit" name="dateEdit_AgreementStart">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_5">
