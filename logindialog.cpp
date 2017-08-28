@@ -148,7 +148,7 @@ void LoginDialog::DBInit()
                            "deductible_cash text, deductible_goods text, projectcost text, totalprojectcost text, carriedcost text,"
                            "projectstate text, receiptdate date, accountsnotifydate date, accountscompletedate date, execution_cach text, execution_goods text, executionbalance text, appearinterest text,interestuse text,"
                            "interestbalance text, carriedexecution text, carriedbusiness text, recognition text, governmentsubsidy text, return text,accountperson text,"
-                           "attach1 text,attach2 text,attach3 text,attach4 text,attach5 text)"));
+                           "attach1 text,attach2 text,attach3 text,attach4 text,attach5 text,memo text)"));
         DB.close();
     }
     catch(QException &e)
