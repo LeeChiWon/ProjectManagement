@@ -154,9 +154,9 @@ void LoginDialog::DBInit()
         query.exec(QString("create table if not exists project_management (businesstype text, projectnumber text, managementagency text, businessgroup1 text, businessgroup2 text,businessgroup3 text,"
                            "organization text, manager text, projectname text not null primary key, agreementstartdate date, agreementenddate date, contribution text,lardaceousspleen text,"
                            "deductible_cash text, deductible_goods text, projectcost text, totalprojectcost text, carriedcost text,"
-                           "projectstate text, receiptdate date, accountsnotifydate date, accountscompletedate date, execution_cach text, execution_goods text, executionbalance text, appearinterest text,interestuse text,"
+                           "projectstate text, receiptdate date, accountsnotifydate date, accountscompletedate date, execution_cash text, execution_goods text, executionbalance text, appearinterest text,interestuse text,"
                            "interestbalance text, carriedexecution text, carriedbusiness text, recognition text, governmentsubsidy text, return text,accountperson text,"
-                           "attach1 text,attach2 text,attach3 text,attach4 text,attach5 text,memo text)"));
+                           "acttach1 text,acttach2 text,acttach3 text,acttach4 text,acttach5 text,memo text)"));
         DB.close();
     }
     catch(QException &e)

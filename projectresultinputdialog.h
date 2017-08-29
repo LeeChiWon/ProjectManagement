@@ -21,6 +21,17 @@ private slots:
     void on_pushButton_Close_clicked();
     void on_pushButton_Save_clicked();
     void on_pushButton_Print_clicked();
+    void on_lineEdit_Excution_Cash_editingFinished();
+    void on_lineEdit_Excution_Goods_editingFinished();
+    void on_lineEdit_ExcutionBalance_editingFinished();
+    void on_lineEdit_Appearinterest_editingFinished();
+    void on_lineEdit_Interestuse_editingFinished();
+    void on_lineEdit_Interestbalance_editingFinished();
+    void on_lineEdit_Carriedexecution_editingFinished();
+    void on_lineEdit_Carriedbusiness_editingFinished();
+    void on_lineEdit_Recognition_editingFinished();
+    void on_lineEdit_Return_editingFinished();
+    void ViewPrint(QPrinter*);
 
 private:
     Ui::ProjectResultInputDialog *ui;

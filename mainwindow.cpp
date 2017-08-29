@@ -108,6 +108,12 @@ void MainWindow::closeEvent(QCloseEvent *event)
                 {
                     Dir.mkdir(FilePath);
                 }
+                QFile File(Setting->value("Configuration/DBPath").toString()
+                           .replace("/ProjectManagement.db",QString("/DBBackup/%1.db").arg(QDate::currentDate().toString("yyyy-MM-dd"))));
+                if(File.exists())
+                {
+                    File.remove();
+                }
                 QFile::copy(Setting->value("Configuration/DBPath").toString(),Setting->value("Configuration/DBPath").toString()
                             .replace("/ProjectManagement.db",QString("/DBBackup/%1.db").arg(QDate::currentDate().toString("yyyy-MM-dd"))));
             }

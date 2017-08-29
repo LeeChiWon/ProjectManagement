@@ -8,7 +8,6 @@ ProjectResultInputDialog::ProjectResultInputDialog(QWidget *parent) :
     ui->setupUi(this);
     SettingInit();
     ComboboxInit();
-    DBShow(QueryString(INIT));
 }
 
 ProjectResultInputDialog::~ProjectResultInputDialog()
@@ -33,6 +32,7 @@ void ProjectResultInputDialog::InitString(QStringList List)
     ui->lineEdit_ProjectName->setText(List.at(1));
     ui->lineEdit_Organization->setText(List.at(2));
     ui->lineEdit_AccountPerson->setText(g_User);
+    DBShow(QueryString(INIT));
 }
 
 void ProjectResultInputDialog::DBInit()
@@ -82,15 +82,15 @@ QString ProjectResultInputDialog::QueryString(int Cmd)
             Query.append(QString(",accountscompletedate='%1'").arg(ui->dateEdit_AccountsCompleteDate->text()));
         }
 
-        Query.append(QString(",excution_cash='%1',excution_goods='%2',excutionbalance='%3',appearinterest='%4',interestuse='%5',interestbalance='%6'"
+        Query.append(QString(",execution_cash='%1',execution_goods='%2',executionbalance='%3',appearinterest='%4',interestuse='%5',interestbalance='%6'"
                              ",carriedexecution='%7',carriedbusiness='%8',recognition='%9',governmentsubsidy='%10',return='%11',acttach1='%12'"
-                             ",acttach2='%13',acttach3='%14',acttach4='%15',acttach5='%16' ").arg(ui->lineEdit_Excution_Cash->text(),ui->lineEdit_Excution_Goods->text())
+                             ",acttach2='%13',acttach3='%14',acttach4='%15',acttach5='%16',accountperson='%17',memo='%18' ").arg(ui->lineEdit_Excution_Cash->text(),ui->lineEdit_Excution_Goods->text())
                      .arg(ui->lineEdit_ExcutionBalance->text(),ui->lineEdit_Appearinterest->text(),ui->lineEdit_Interestuse->text(),ui->lineEdit_Interestbalance->text())
                      .arg(ui->lineEdit_Carriedexecution->text(),ui->lineEdit_Carriedbusiness->text(),ui->lineEdit_Recognition->text(),ui->lineEdit_Governmentsubsidy->text())
                      .arg(ui->lineEdit_Return->text(),ui->lineEdit_Acttach1->text(),ui->lineEdit_Acttach2->text(),ui->lineEdit_Acttach3->text(),ui->lineEdit_Acttach4->text()
-                          ,ui->lineEdit_Acttach5->text()));
+                          ,ui->lineEdit_Acttach5->text(),ui->lineEdit_AccountPerson->text(),ui->lineEdit_Memo->text()));
 
-        Query.append("where projectname='%1'").arg(ui->lineEdit_ProjectName->text());
+        Query.append(QString("where projectname='%1'").arg(ui->lineEdit_ProjectName->text()));
         break;
 
     }
@@ -122,6 +122,11 @@ void ProjectResultInputDialog::DBShow(QString QueryStr)
                     break;
                 }
             }
+
+            if(!query.value("accountperson").toString().isEmpty())
+            {
+                ui->lineEdit_AccountPerson->setText(query.value("accountperson").toString());
+            }
             if(!query.value("receiptdate").toString().isEmpty())
             {
                 ui->dateEdit_ReceiptDate->setDate(QDate::fromString(query.value("receiptdate").toString(),"yyyy-MM-dd"));
@@ -135,9 +140,9 @@ void ProjectResultInputDialog::DBShow(QString QueryStr)
                 ui->dateEdit_AccountsCompleteDate->setDate(QDate::fromString(query.value("accountscompletedate").toString(),"yyyy-MM-dd"));
             }
 
-            ui->lineEdit_Excution_Cash->setText(query.value("excution_cash").toString());
-            ui->lineEdit_Excution_Goods->setText(query.value("excution_goods").toString());
-            ui->lineEdit_ExcutionBalance->setText(query.value("excutionbalance").toString());
+            ui->lineEdit_Excution_Cash->setText(query.value("execution_cash").toString());
+            ui->lineEdit_Excution_Goods->setText(query.value("execution_goods").toString());
+            ui->lineEdit_ExcutionBalance->setText(query.value("executionbalance").toString());
             ui->lineEdit_Appearinterest->setText(query.value("appearinterest").toString());
             ui->lineEdit_Interestuse->setText(query.value("interestuse").toString());
             ui->lineEdit_Interestbalance->setText(query.value("interestbalance").toString());
@@ -146,11 +151,11 @@ void ProjectResultInputDialog::DBShow(QString QueryStr)
             ui->lineEdit_Recognition->setText(query.value("recognition").toString());
             ui->lineEdit_Governmentsubsidy->setText(query.value("governmentsubsidy").toString());
             ui->lineEdit_Return->setText(query.value("return").toString());
-            ui->lineEdit_Acttach1->setText(query.value("Acttach1").toString());
-            ui->lineEdit_Acttach2->setText(query.value("Acttach2").toString());
-            ui->lineEdit_Acttach3->setText(query.value("Acttach3").toString());
-            ui->lineEdit_Acttach4->setText(query.value("Acttach4").toString());
-            ui->lineEdit_Acttach5->setText(query.value("Acttach5").toString());
+            ui->lineEdit_Acttach1->setText(query.value("acttach1").toString());
+            ui->lineEdit_Acttach2->setText(query.value("acttach2").toString());
+            ui->lineEdit_Acttach3->setText(query.value("acttach3").toString());
+            ui->lineEdit_Acttach4->setText(query.value("acttach4").toString());
+            ui->lineEdit_Acttach5->setText(query.value("acttach5").toString());
             ui->lineEdit_Memo->setText(query.value("memo").toString());
         }
         DB.close();
@@ -204,5 +209,72 @@ void ProjectResultInputDialog::on_pushButton_Save_clicked()
 
 void ProjectResultInputDialog::on_pushButton_Print_clicked()
 {
+    QPrintPreviewDialog dialog;
+    connect(&dialog, SIGNAL(paintRequested(QPrinter*)), this, SLOT(ViewPrint(QPrinter*)));
+    dialog.exec();
+}
 
+void ProjectResultInputDialog::on_lineEdit_Excution_Cash_editingFinished()
+{
+    ui->lineEdit_Excution_Cash->setText(QString("%L1").arg(ui->lineEdit_Excution_Cash->text().replace(",","").toInt()));
+}
+
+void ProjectResultInputDialog::on_lineEdit_Excution_Goods_editingFinished()
+{
+    ui->lineEdit_Excution_Goods->setText(QString("%L1").arg(ui->lineEdit_Excution_Goods->text().replace(",","").toInt()));
+}
+
+void ProjectResultInputDialog::on_lineEdit_ExcutionBalance_editingFinished()
+{
+    ui->lineEdit_ExcutionBalance->setText(QString("%L1").arg(ui->lineEdit_ExcutionBalance->text().replace(",","").toInt()));
+}
+
+void ProjectResultInputDialog::on_lineEdit_Appearinterest_editingFinished()
+{
+    ui->lineEdit_Appearinterest->setText(QString("%L1").arg(ui->lineEdit_Appearinterest->text().replace(",","").toInt()));
+}
+
+void ProjectResultInputDialog::on_lineEdit_Interestuse_editingFinished()
+{
+    ui->lineEdit_Interestuse->setText(QString("%L1").arg(ui->lineEdit_Interestuse->text().replace(",","").toInt()));
+}
+
+void ProjectResultInputDialog::on_lineEdit_Interestbalance_editingFinished()
+{
+    ui->lineEdit_Interestbalance->setText(QString("%L1").arg(ui->lineEdit_Interestbalance->text().replace(",","").toInt()));
+}
+
+void ProjectResultInputDialog::on_lineEdit_Carriedexecution_editingFinished()
+{
+    ui->lineEdit_Carriedexecution->setText(QString("%L1").arg(ui->lineEdit_Carriedexecution->text().replace(",","").toInt()));
+}
+
+void ProjectResultInputDialog::on_lineEdit_Carriedbusiness_editingFinished()
+{
+    ui->lineEdit_Carriedbusiness->setText(QString("%L1").arg(ui->lineEdit_Carriedbusiness->text().replace(",","").toInt()));
+}
+
+void ProjectResultInputDialog::on_lineEdit_Recognition_editingFinished()
+{
+    ui->lineEdit_Recognition->setText(QString("%L1").arg(ui->lineEdit_Recognition->text().replace(",","").toInt()));
+}
+
+void ProjectResultInputDialog::on_lineEdit_Return_editingFinished()
+{
+    ui->lineEdit_Return->setText(QString("%L1").arg(ui->lineEdit_Return->text().replace(",","").toInt()));
+}
+
+void ProjectResultInputDialog::ViewPrint(QPrinter *printer)
+{
+    QPainter painter;
+    painter.begin(printer);
+    double xscale = printer->pageRect().width()/double(this->width());
+    double yscale = printer->pageRect().height()/double(this->height());
+    double scale = qMin(xscale, yscale);
+    painter.translate(printer->paperRect().x() + printer->pageRect().width()/2,
+                      printer->paperRect().y() + printer->pageRect().height()/2);
+    painter.scale(scale, scale);
+    painter.translate(-width()/2, -height()/2);
+
+    this->render(&painter);
 }

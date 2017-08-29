@@ -361,7 +361,7 @@ void ProjectSearch_Form::on_tableWidget_itemClicked(QTableWidgetItem *item)
 void ProjectSearch_Form::on_tableWidget_itemDoubleClicked(QTableWidgetItem *item)
 {
     ProjectResultInputDialog dialog;
-    dialog.InitString(QStringList()<<ui->tableWidget->item(item->row(),MANAGEMENTAGENCY)->text()<<ui->tableWidget->item(item->row(),PROJECTNUMBER)->text()
+    dialog.InitString(QStringList()<<ui->tableWidget->item(item->row(),MANAGEMENTAGENCY)->text()<<ui->tableWidget->item(item->row(),PROJECTNAME)->text()
                                     <<ui->tableWidget->item(item->row(),ORGANIZATION)->text());
     dialog.exec();
 }
