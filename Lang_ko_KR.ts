@@ -227,7 +227,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="206"/>
-        <location filename="mainwindow.cpp" line="141"/>
+        <location filename="mainwindow.cpp" line="146"/>
         <source>Main</source>
         <translation>메인화면</translation>
     </message>
@@ -265,8 +265,8 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="423"/>
-        <location filename="mainwindow.cpp" line="173"/>
-        <location filename="mainwindow.cpp" line="175"/>
+        <location filename="mainwindow.cpp" line="178"/>
+        <location filename="mainwindow.cpp" line="180"/>
         <source>UserRegistration</source>
         <translation>사용자관리</translation>
     </message>
@@ -277,8 +277,8 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="438"/>
-        <location filename="mainwindow.cpp" line="209"/>
-        <location filename="mainwindow.cpp" line="211"/>
+        <location filename="mainwindow.cpp" line="214"/>
+        <location filename="mainwindow.cpp" line="216"/>
         <source>ProjectInput</source>
         <translation>정산과제입력</translation>
     </message>
@@ -289,8 +289,8 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="450"/>
-        <location filename="mainwindow.cpp" line="218"/>
-        <location filename="mainwindow.cpp" line="220"/>
+        <location filename="mainwindow.cpp" line="223"/>
+        <location filename="mainwindow.cpp" line="225"/>
         <source>ProjectSearch</source>
         <translation>과제내역조회</translation>
     </message>
@@ -315,18 +315,18 @@
         <translation>어플리케이션을 종료하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="195"/>
-        <location filename="mainwindow.cpp" line="202"/>
+        <location filename="mainwindow.cpp" line="200"/>
+        <location filename="mainwindow.cpp" line="207"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="195"/>
+        <location filename="mainwindow.cpp" line="200"/>
         <source>Database open error!</source>
         <translation>데이터베이스 열기 에러!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="202"/>
+        <location filename="mainwindow.cpp" line="207"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
     </message>
@@ -552,13 +552,13 @@
     </message>
     <message>
         <location filename="projectresultinputdialog.ui" line="285"/>
-        <location filename="projectresultinputdialog.cpp" line="27"/>
+        <location filename="projectresultinputdialog.cpp" line="26"/>
         <source>ReceiptDate</source>
         <translation>접수일</translation>
     </message>
     <message>
         <location filename="projectresultinputdialog.ui" line="380"/>
-        <location filename="projectresultinputdialog.cpp" line="27"/>
+        <location filename="projectresultinputdialog.cpp" line="26"/>
         <source>AccountsNotifyDate</source>
         <translation>정산통보일</translation>
     </message>
@@ -603,7 +603,7 @@
     </message>
     <message>
         <location filename="projectresultinputdialog.ui" line="1356"/>
-        <location filename="projectresultinputdialog.cpp" line="27"/>
+        <location filename="projectresultinputdialog.cpp" line="26"/>
         <source>AccountsCompleteDate</source>
         <translation>정산완료일</translation>
     </message>
@@ -680,8 +680,8 @@
     <message>
         <location filename="projectresultinputdialog.cpp" line="47"/>
         <location filename="projectresultinputdialog.cpp" line="54"/>
-        <location filename="projectresultinputdialog.cpp" line="161"/>
-        <location filename="projectresultinputdialog.cpp" line="190"/>
+        <location filename="projectresultinputdialog.cpp" line="166"/>
+        <location filename="projectresultinputdialog.cpp" line="195"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
@@ -692,20 +692,25 @@
     </message>
     <message>
         <location filename="projectresultinputdialog.cpp" line="54"/>
-        <location filename="projectresultinputdialog.cpp" line="161"/>
-        <location filename="projectresultinputdialog.cpp" line="190"/>
+        <location filename="projectresultinputdialog.cpp" line="166"/>
+        <location filename="projectresultinputdialog.cpp" line="195"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.cpp" line="201"/>
+        <location filename="projectresultinputdialog.cpp" line="206"/>
         <source>Information</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.cpp" line="201"/>
+        <location filename="projectresultinputdialog.cpp" line="206"/>
         <source>Update Complete.</source>
         <translation>정산결과가 저장되었습니다.</translation>
+    </message>
+    <message>
+        <location filename="projectresultinputdialog.cpp" line="213"/>
+        <source>Preview</source>
+        <translation>미리보기</translation>
     </message>
 </context>
 <context>
@@ -718,7 +723,7 @@
     <message>
         <location filename="projectsearch_form.ui" line="125"/>
         <location filename="projectsearch_form.cpp" line="84"/>
-        <location filename="projectsearch_form.cpp" line="240"/>
+        <location filename="projectsearch_form.cpp" line="239"/>
         <source>ProjectName</source>
         <translation>과제명</translation>
     </message>
@@ -730,21 +735,21 @@
     <message>
         <location filename="projectsearch_form.ui" line="362"/>
         <location filename="projectsearch_form.cpp" line="84"/>
-        <location filename="projectsearch_form.cpp" line="240"/>
+        <location filename="projectsearch_form.cpp" line="239"/>
         <source>Manager</source>
         <translation>책임자명</translation>
     </message>
     <message>
         <location filename="projectsearch_form.ui" line="477"/>
         <location filename="projectsearch_form.cpp" line="83"/>
-        <location filename="projectsearch_form.cpp" line="239"/>
+        <location filename="projectsearch_form.cpp" line="238"/>
         <source>ProjectNumber</source>
         <translation>과제번호</translation>
     </message>
     <message>
         <location filename="projectsearch_form.ui" line="582"/>
         <location filename="projectsearch_form.cpp" line="84"/>
-        <location filename="projectsearch_form.cpp" line="240"/>
+        <location filename="projectsearch_form.cpp" line="239"/>
         <source>Organization</source>
         <translation>수행기관명</translation>
     </message>
@@ -761,7 +766,7 @@
     <message>
         <location filename="projectsearch_form.ui" line="907"/>
         <location filename="projectsearch_form.cpp" line="83"/>
-        <location filename="projectsearch_form.cpp" line="239"/>
+        <location filename="projectsearch_form.cpp" line="238"/>
         <source>BusinessType</source>
         <translation>사업종류</translation>
     </message>
@@ -802,7 +807,7 @@
         <location filename="projectsearch_form.cpp" line="128"/>
         <location filename="projectsearch_form.cpp" line="135"/>
         <location filename="projectsearch_form.cpp" line="194"/>
-        <location filename="projectsearch_form.cpp" line="229"/>
+        <location filename="projectsearch_form.cpp" line="228"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
@@ -824,13 +829,13 @@
     <message>
         <location filename="projectsearch_form.cpp" line="135"/>
         <location filename="projectsearch_form.cpp" line="194"/>
-        <location filename="projectsearch_form.cpp" line="229"/>
+        <location filename="projectsearch_form.cpp" line="228"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
     </message>
     <message>
         <location filename="projectsearch_form.cpp" line="83"/>
-        <location filename="projectsearch_form.cpp" line="239"/>
+        <location filename="projectsearch_form.cpp" line="238"/>
         <source>Managementagency</source>
         <translation>관리기관</translation>
     </message>
@@ -856,19 +861,19 @@
     </message>
     <message>
         <location filename="projectsearch_form.cpp" line="83"/>
-        <location filename="projectsearch_form.cpp" line="239"/>
+        <location filename="projectsearch_form.cpp" line="238"/>
         <source>BusinessGroup1</source>
         <translation>사업분류(대분류)</translation>
     </message>
     <message>
         <location filename="projectsearch_form.cpp" line="84"/>
-        <location filename="projectsearch_form.cpp" line="239"/>
+        <location filename="projectsearch_form.cpp" line="238"/>
         <source>BusinessGroup2</source>
         <translation>사업분류(중분류)</translation>
     </message>
     <message>
         <location filename="projectsearch_form.cpp" line="84"/>
-        <location filename="projectsearch_form.cpp" line="239"/>
+        <location filename="projectsearch_form.cpp" line="238"/>
         <source>BusinessGroup3</source>
         <translation>사업분류(소분류)</translation>
     </message>

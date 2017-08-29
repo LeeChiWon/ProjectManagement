@@ -38,7 +38,10 @@ enum DBErrorList
 {
     DB_ERROR_INSERT_PRIMARYKEY=19
 };
-
+enum Acttach
+{
+    ACTTACH1,ACTTACH2,ACTTACH3,ACTTACH4,ACTTACH5
+};
 
 extern int g_LoginLevel;
 extern QString g_User;

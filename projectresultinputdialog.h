@@ -17,6 +17,9 @@ public:
     ~ProjectResultInputDialog();    
     void InitString(QStringList);
 
+protected:
+    void mouseDoubleClickEvent(QMouseEvent* event);
+
 private slots:
     void on_pushButton_Close_clicked();
     void on_pushButton_Save_clicked();
@@ -32,10 +35,17 @@ private slots:
     void on_lineEdit_Recognition_editingFinished();
     void on_lineEdit_Return_editingFinished();
     void ViewPrint(QPrinter*);
+    void on_pushButton_Acttach1_clicked();
+    void on_pushButton_Acttach2_clicked();
+    void on_pushButton_Acttach3_clicked();
+    void on_pushButton_Acttach4_clicked();
+    void on_pushButton_Acttach5_clicked();
 
 private:
     Ui::ProjectResultInputDialog *ui;
     QSettings *Setting;
+    QString Acttach[5],InputActtach[5],ActtachPath;
+    QString ProjectNumber;
 
     void ComboboxInit();
     void DBInit();
