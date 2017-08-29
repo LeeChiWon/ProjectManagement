@@ -1084,10 +1084,15 @@
  <tabstops>
   <tabstop>lineEdit_Name</tabstop>
   <tabstop>lineEdit_CompanyNum</tabstop>
+  <tabstop>dateEdit_JoinDate</tabstop>
+  <tabstop>dateEdit_ResignDate</tabstop>
   <tabstop>checkBox_Admin</tabstop>
   <tabstop>pushButton_Add</tabstop>
   <tabstop>pushButton_Modify</tabstop>
   <tabstop>pushButton_Delete</tabstop>
+  <tabstop>comboBox_Search</tabstop>
+  <tabstop>lineEdit_Search</tabstop>
+  <tabstop>pushButton_Search</tabstop>
   <tabstop>tableWidget</tabstop>
  </tabstops>
  <resources>

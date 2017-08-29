@@ -18,5 +18,6 @@
         <file>img/modify.png</file>
         <file>img/Search.png</file>
         <file>img/write.png</file>
+        <file>img/change.png</file>
     </qresource>
 </RCC>

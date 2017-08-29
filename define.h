@@ -27,7 +27,7 @@ enum Project_UserManagement_Column
 
 enum QueryCommand
 {
-    INIT, SEARCH, DEL
+    INIT, SEARCH, DEL, UPDATE
 };
 
 enum Project_Management_Column
@@ -39,6 +39,9 @@ enum DBErrorList
     DB_ERROR_INSERT_PRIMARYKEY=19
 };
 
+
 extern int g_LoginLevel;
+extern QString g_User;
+extern QString g_LoginID;
 
 #endif // DEFINE_H

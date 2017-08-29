@@ -6,7 +6,7 @@ UserRegistration_Form::UserRegistration_Form(QWidget *parent) :
     ui(new Ui::UserRegistration_Form)
 {
     ui->setupUi(this);
-    ui->dateEdit_ResignDate->setDate(QDate::fromString("1800-01-01","yyyy-MM-dd"));
+    ui->dateEdit_ResignDate->setDate(QDate::fromString("1900-01-01","yyyy-MM-dd"));
     ComboboxInit();
     SettingInit();
     ContextMenuInit();
@@ -112,7 +112,7 @@ void UserRegistration_Form::UserShow()
 
         QSqlQuery query(DB);
 
-        query.exec(QString("select * from user_management"));
+        query.exec("select * from user_management");
 
         while(query.next())
         {
@@ -163,7 +163,7 @@ bool UserRegistration_Form::UserAdd()
         }
         QSqlQuery query(DB);
 
-        if(ui->dateEdit_ResignDate->date().toString("yyyy-MM-dd") == "1800-01-01")
+        if(ui->dateEdit_ResignDate->date().toString("yyyy-MM-dd") == "1900-01-01")
         {
             query.exec(QString("insert into user_management(companynumber, name, password, joindate, admin) values ('%1','%2','%3','%4',%5)")
                        .arg(ui->lineEdit_CompanyNum->text(),ui->lineEdit_Name->text()).arg("1111").arg(ui->dateEdit_JoinDate->date().toString("yyyy-MM-dd"))
@@ -264,7 +264,7 @@ void UserRegistration_Form::UIInit()
     ui->lineEdit_CompanyNum->setText("");
     ui->dateEdit_JoinDate->setDate(QDate::currentDate());
     ui->lineEdit_Name->setText("");
-    ui->dateEdit_ResignDate->setDate(QDate::fromString("1800-01-01","yyyy-MM-dd"));
+    ui->dateEdit_ResignDate->setDate(QDate::fromString("1900-01-01","yyyy-MM-dd"));
     ui->checkBox_Admin->setChecked(false);
     ui->pushButton_Modify->setEnabled(false);
     ui->pushButton_Delete->setEnabled(false);
@@ -301,6 +301,7 @@ void UserRegistration_Form::ContextMenuInit()
     ContextMenu->addActions(ContextAction);
 }
 
+
 void UserRegistration_Form::on_tableWidget_itemClicked(QTableWidgetItem *item)
 {
     ui->lineEdit_CompanyNum->setText(ui->tableWidget->item(item->row(),COLUMN_COMPANYNUMBER)->text());
@@ -311,7 +312,7 @@ void UserRegistration_Form::on_tableWidget_itemClicked(QTableWidgetItem *item)
     ui->dateEdit_JoinDate->setDate(QDate::fromString(ui->tableWidget->item(item->row(),COLUMN_JOINDATE)->text(),"yyyy-MM-dd"));
     if(ui->tableWidget->item(item->row(),COLUMN_RESIGNDATE)->text().isEmpty())
     {
-        ui->dateEdit_ResignDate->setDate(QDate::fromString("1800-01-01","yyyy-MM-dd"));
+        ui->dateEdit_ResignDate->setDate(QDate::fromString("1900-01-01","yyyy-MM-dd"));
     }
     else
     {
@@ -322,10 +323,10 @@ void UserRegistration_Form::on_tableWidget_itemClicked(QTableWidgetItem *item)
 
 void UserRegistration_Form::on_pushButton_Search_clicked()
 {
-    QList<QTableWidgetItem *>TableWidgetItem=ui->tableWidget->findItems(ui->lineEdit_Search->text(), Qt::MatchEndsWith);
+    QList<QTableWidgetItem *>TableWidgetItem=ui->tableWidget->findItems(ui->lineEdit_Search->text(), Qt::MatchContains);
     foreach(QTableWidgetItem *Item, TableWidgetItem)
     {
-        ui->tableWidget->selectRow(Item->row());
+        ui->tableWidget->selectRow(Item->row());        
         ui->tableWidget->itemClicked(Item);
         QMessageBox::information(this,tr("Search Result"),tr("Search Item."),QMessageBox::Ok);
         break;

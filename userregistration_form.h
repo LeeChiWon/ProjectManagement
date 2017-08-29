@@ -46,7 +46,7 @@ private:
     void UIInit();
     bool isEditEmpty();
     void ComboboxInit();
-    void ContextMenuInit();
+    void ContextMenuInit(); 
 };
 
 #endif // USERREGISTRATION_FORM_H

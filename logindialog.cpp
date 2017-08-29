@@ -76,7 +76,7 @@ void LoginDialog::on_pushButton_Login_clicked()
             QMessageBox::warning(this,tr("Warning"),tr("Check your ID/Password."),QMessageBox::Ok);
             return;
         }
-        if(ResignDate.isEmpty() || ResignDate.isNull())
+        if(!ResignDate.isEmpty() || !ResignDate.isNull())
         {
             QMessageBox::warning(this,tr("Warning"),tr("Resign ID."),QMessageBox::Ok);
             return;
@@ -128,13 +128,21 @@ void LoginDialog::DBInit()
         DB.setDatabaseName(Setting->value("Configuration/DBPath").toString());
     }
 
-
     try
     {
         if(!DB.open())
         {
-            QMessageBox::warning(this,tr("Warning"),QString("%1\n%2").arg(tr("Database open error!"),DB.lastError().text()),QMessageBox::Ok);
-            QSqlDatabase::removeDatabase("MainDB");
+            switch(DB.lastError().number())
+            {
+            case -1:
+                QMessageBox::warning(this,tr("Warning"),QString("%1\n%2").arg(tr("Database open error!"),tr("Database is not exist!")),QMessageBox::Ok);
+                break;
+            default:
+                QMessageBox::warning(this,tr("Warning"),QString("%1\n%2").arg(tr("Database open error!"),DB.lastError().text()),QMessageBox::Ok);
+                break;
+            }
+            exit(0);
+            QSqlDatabase::removeDatabase("MainDB");            
             return;
         }
 
@@ -155,7 +163,8 @@ void LoginDialog::DBInit()
     {
         QMessageBox::warning(this,tr("Warning"),QString("%1\n%2").arg(tr("Database Error!"),e.what()),QMessageBox::Ok);
         QSqlDatabase::removeDatabase("MainDB");
-    }
+        return;
+    }   
 }
 
 bool LoginDialog::IsCheckLogin()

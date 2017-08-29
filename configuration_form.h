@@ -21,6 +21,8 @@ private slots:
     void on_pushButton_Apply_clicked();
     void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
 
+    void on_pushButton_PasswordChange_clicked();
+
 private:
     Ui::Configuration_form *ui;
     QSettings *Setting;
@@ -29,6 +31,8 @@ private:
     void TreeWidgetInit();
     void SettingInit();
     void AutoStartChecked(bool);
+    void DBInit();
+    bool ChangePassword();
 };
 
 #endif // CONFIGURATION_FORM_H

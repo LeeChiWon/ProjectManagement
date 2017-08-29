@@ -3,6 +3,8 @@
 #include "define.h"
 
 int g_LoginLevel;
+QString g_User;
+QString g_LoginID;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -70,8 +72,8 @@ void MainWindow::TrayIconInit()
 
 void MainWindow::UserInfo(QString ID, QString Name, int Level)
 {
-    LoginID=ID;
-    User=Name;
+    g_LoginID=LoginID=ID;
+    g_User=User=Name;
     ui->label_ID->setText(User);
     g_LoginLevel=LoginLevel=Level;
     LoginLevelCheck();
@@ -95,7 +97,20 @@ void MainWindow::closeEvent(QCloseEvent *event)
             {
                 TrayIcon->hide();
             }
-            Setting->setValue("Configuration/Geometry",saveGeometry());
+            Setting->setValue("Configuration/Geometry",saveGeometry());           
+
+            if((g_LoginLevel==LOGIN_MANAGER|| g_LoginLevel==LOGIN_MASTER) && Setting->value("Configuration/DBBackup").toBool())
+            {
+                QString FilePath=Setting->value("Configuration/DBPath").toString().replace("/ProjectManagement.db","/DBBackup");
+                QDir Dir(FilePath);
+
+                if(!Dir.exists())
+                {
+                    Dir.mkdir(FilePath);
+                }
+                QFile::copy(Setting->value("Configuration/DBPath").toString(),Setting->value("Configuration/DBPath").toString()
+                            .replace("/ProjectManagement.db",QString("/DBBackup/%1.db").arg(QDate::currentDate().toString("yyyy-MM-dd"))));
+            }
             break;
         default:
             return;

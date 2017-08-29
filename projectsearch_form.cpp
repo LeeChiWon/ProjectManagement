@@ -183,7 +183,7 @@ void ProjectSearch_Form::Search(QString QueryStr)
                 }
             }*/
         }
-        qDebug()<<query.lastError();
+
         ui->tableWidget->resizeColumnsToContents();
         ui->tableWidget->resizeRowsToContents();
         DB.close();
@@ -217,8 +217,7 @@ void ProjectSearch_Form::Delete(QString QueryStr)
         QSqlQuery query(DB);
 
         query.exec(QueryStr);
-        qDebug()<<query.lastError();
-        qDebug()<<query.lastQuery();
+
         ui->tableWidget->resizeColumnsToContents();
         ui->tableWidget->resizeRowsToContents();
         DB.close();
@@ -278,7 +277,7 @@ QString ProjectSearch_Form::QueryString(int Cmd)
             {
                 Query.append("and ");
             }
-            Query.append(QString("managmentagency like '\%%1\%'").arg(ui->lineEdit_ManagementAgency->text()));
+            Query.append(QString("managementagency like '\%%1\%'").arg(ui->lineEdit_ManagementAgency->text()));
             Check=true;
         }
         if(!ui->lineEdit_Organization->text().isEmpty())
@@ -362,5 +361,7 @@ void ProjectSearch_Form::on_tableWidget_itemClicked(QTableWidgetItem *item)
 void ProjectSearch_Form::on_tableWidget_itemDoubleClicked(QTableWidgetItem *item)
 {
     ProjectResultInputDialog dialog;
+    dialog.InitString(QStringList()<<ui->tableWidget->item(item->row(),MANAGEMENTAGENCY)->text()<<ui->tableWidget->item(item->row(),PROJECTNUMBER)->text()
+                                    <<ui->tableWidget->item(item->row(),ORGANIZATION)->text());
     dialog.exec();
 }

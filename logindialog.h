@@ -17,7 +17,7 @@ public:
     ~LoginDialog();
 
 signals:
-    void LoggedIn();
+    void LoggedIn();   
     void UserInfo(QString,QString,int);
 
 public slots:
