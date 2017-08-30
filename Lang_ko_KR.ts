@@ -242,62 +242,74 @@
         <translation>아이디</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="396"/>
+        <location filename="mainwindow.ui" line="397"/>
         <location filename="mainwindow.cpp" line="33"/>
         <location filename="mainwindow.cpp" line="35"/>
         <source>Configuration</source>
         <translation>환경설정</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="399"/>
+        <location filename="mainwindow.ui" line="400"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="408"/>
+        <location filename="mainwindow.ui" line="409"/>
         <source>Exit</source>
         <translation>종료</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="411"/>
+        <location filename="mainwindow.ui" line="412"/>
         <source>Ctrl+X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="423"/>
+        <location filename="mainwindow.ui" line="424"/>
         <location filename="mainwindow.cpp" line="178"/>
         <location filename="mainwindow.cpp" line="180"/>
         <source>UserRegistration</source>
         <translation>사용자관리</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="426"/>
+        <location filename="mainwindow.ui" line="427"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="438"/>
+        <location filename="mainwindow.ui" line="439"/>
         <location filename="mainwindow.cpp" line="214"/>
         <location filename="mainwindow.cpp" line="216"/>
         <source>ProjectInput</source>
         <translation>정산과제입력</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="441"/>
+        <location filename="mainwindow.ui" line="442"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="450"/>
+        <location filename="mainwindow.ui" line="451"/>
         <location filename="mainwindow.cpp" line="223"/>
         <location filename="mainwindow.cpp" line="225"/>
         <source>ProjectSearch</source>
         <translation>과제내역조회</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="453"/>
+        <location filename="mainwindow.ui" line="454"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="463"/>
+        <location filename="mainwindow.cpp" line="232"/>
+        <location filename="mainwindow.cpp" line="234"/>
+        <source>Statistics</source>
+        <translation>통계</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="466"/>
+        <source>Ctrl+H</source>
+        <translation>Ctrl+H</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="69"/>
@@ -534,14 +546,14 @@
     <message>
         <location filename="projectresultinputdialog.ui" line="76"/>
         <location filename="projectresultinputdialog.ui" line="399"/>
-        <location filename="projectresultinputdialog.ui" line="912"/>
-        <location filename="projectresultinputdialog.ui" line="934"/>
-        <location filename="projectresultinputdialog.ui" line="956"/>
-        <location filename="projectresultinputdialog.ui" line="1096"/>
-        <location filename="projectresultinputdialog.ui" line="1394"/>
-        <location filename="projectresultinputdialog.ui" line="1930"/>
-        <location filename="projectresultinputdialog.ui" line="2142"/>
-        <location filename="projectresultinputdialog.ui" line="2164"/>
+        <location filename="projectresultinputdialog.ui" line="896"/>
+        <location filename="projectresultinputdialog.ui" line="918"/>
+        <location filename="projectresultinputdialog.ui" line="940"/>
+        <location filename="projectresultinputdialog.ui" line="1048"/>
+        <location filename="projectresultinputdialog.ui" line="1330"/>
+        <location filename="projectresultinputdialog.ui" line="1866"/>
+        <location filename="projectresultinputdialog.ui" line="2078"/>
+        <location filename="projectresultinputdialog.ui" line="2100"/>
         <source>\</source>
         <translation>원</translation>
     </message>
@@ -578,139 +590,157 @@
         <translation>집행액(현금)</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="798"/>
+        <location filename="projectresultinputdialog.ui" line="782"/>
         <source>Excutionbalance</source>
         <translation>집행잔액</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="893"/>
+        <location filename="projectresultinputdialog.ui" line="877"/>
         <source>Memo</source>
         <translation>메모</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="978"/>
-        <location filename="projectresultinputdialog.ui" line="1013"/>
-        <location filename="projectresultinputdialog.ui" line="1118"/>
-        <location filename="projectresultinputdialog.ui" line="1375"/>
-        <location filename="projectresultinputdialog.ui" line="2186"/>
+        <location filename="projectresultinputdialog.ui" line="962"/>
+        <location filename="projectresultinputdialog.ui" line="997"/>
+        <location filename="projectresultinputdialog.ui" line="1070"/>
+        <location filename="projectresultinputdialog.ui" line="1311"/>
+        <location filename="projectresultinputdialog.ui" line="2122"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="1245"/>
+        <location filename="projectresultinputdialog.ui" line="1197"/>
         <source>Interestbalance</source>
         <translation>이자잔액</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="1356"/>
+        <location filename="projectresultinputdialog.ui" line="1292"/>
         <location filename="projectresultinputdialog.cpp" line="26"/>
         <source>AccountsCompleteDate</source>
         <translation>정산완료일</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="1508"/>
+        <location filename="projectresultinputdialog.ui" line="1444"/>
         <source>Acttach</source>
         <translation>첨부</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="1622"/>
+        <location filename="projectresultinputdialog.ui" line="1558"/>
         <source>Return</source>
         <translation>반납금액</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="1717"/>
+        <location filename="projectresultinputdialog.ui" line="1653"/>
         <source>Carriedexecution</source>
         <translation>이월사업비집행액</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="1911"/>
+        <location filename="projectresultinputdialog.ui" line="1847"/>
         <source>Governmentsubsidy</source>
         <translation>정부보조금율</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="2028"/>
+        <location filename="projectresultinputdialog.ui" line="1964"/>
         <source>Interestuse</source>
         <translation>이자사용액</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="2123"/>
+        <location filename="projectresultinputdialog.ui" line="2059"/>
         <source>Carriedbusiness</source>
         <translation>차기이월사업비</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="2281"/>
+        <location filename="projectresultinputdialog.ui" line="2217"/>
         <source>ProjectState</source>
         <translation>상태</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="2472"/>
+        <location filename="projectresultinputdialog.ui" line="2867"/>
         <source>Organization</source>
         <translation>수행기관명</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="2662"/>
+        <location filename="projectresultinputdialog.ui" line="3057"/>
         <source>ManagementAgency</source>
         <translation>관리기관명</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="2567"/>
+        <location filename="projectresultinputdialog.ui" line="2962"/>
         <source>AccountPerson</source>
         <translation>정산담당자</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="2807"/>
+        <location filename="projectresultinputdialog.ui" line="3202"/>
         <source>ProjectName</source>
         <translation>과제명</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="2933"/>
+        <location filename="projectresultinputdialog.ui" line="3328"/>
         <source>Save</source>
         <translation>저장</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="2956"/>
+        <location filename="projectresultinputdialog.ui" line="3351"/>
         <source>Close</source>
         <translation>닫기</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.ui" line="2992"/>
+        <location filename="projectresultinputdialog.ui" line="3387"/>
         <source>Print</source>
         <translation>인쇄</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.cpp" line="47"/>
-        <location filename="projectresultinputdialog.cpp" line="54"/>
-        <location filename="projectresultinputdialog.cpp" line="166"/>
-        <location filename="projectresultinputdialog.cpp" line="195"/>
+        <location filename="projectresultinputdialog.cpp" line="112"/>
+        <location filename="projectresultinputdialog.cpp" line="119"/>
+        <location filename="projectresultinputdialog.cpp" line="304"/>
+        <location filename="projectresultinputdialog.cpp" line="333"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.cpp" line="47"/>
+        <location filename="projectresultinputdialog.cpp" line="112"/>
         <source>Database open error!</source>
         <translation>데이터베이스 열기 에러!</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.cpp" line="54"/>
-        <location filename="projectresultinputdialog.cpp" line="166"/>
-        <location filename="projectresultinputdialog.cpp" line="195"/>
+        <location filename="projectresultinputdialog.cpp" line="119"/>
+        <location filename="projectresultinputdialog.cpp" line="304"/>
+        <location filename="projectresultinputdialog.cpp" line="333"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.cpp" line="206"/>
+        <location filename="projectresultinputdialog.cpp" line="344"/>
         <source>Information</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.cpp" line="206"/>
+        <location filename="projectresultinputdialog.cpp" line="344"/>
         <source>Update Complete.</source>
         <translation>정산결과가 저장되었습니다.</translation>
     </message>
     <message>
-        <location filename="projectresultinputdialog.cpp" line="213"/>
+        <location filename="projectresultinputdialog.cpp" line="351"/>
         <source>Preview</source>
         <translation>미리보기</translation>
+    </message>
+    <message>
+        <location filename="projectresultinputdialog.cpp" line="425"/>
+        <location filename="projectresultinputdialog.cpp" line="432"/>
+        <location filename="projectresultinputdialog.cpp" line="439"/>
+        <location filename="projectresultinputdialog.cpp" line="446"/>
+        <location filename="projectresultinputdialog.cpp" line="453"/>
+        <source>Open File</source>
+        <translation>파일 열기</translation>
+    </message>
+    <message>
+        <location filename="projectresultinputdialog.cpp" line="425"/>
+        <location filename="projectresultinputdialog.cpp" line="432"/>
+        <location filename="projectresultinputdialog.cpp" line="439"/>
+        <location filename="projectresultinputdialog.cpp" line="446"/>
+        <location filename="projectresultinputdialog.cpp" line="453"/>
+        <source>All Files; (*.*)</source>
+        <translation>모튼 파일; (*.*)</translation>
     </message>
 </context>
 <context>
@@ -876,6 +906,83 @@
         <location filename="projectsearch_form.cpp" line="238"/>
         <source>BusinessGroup3</source>
         <translation>사업분류(소분류)</translation>
+    </message>
+</context>
+<context>
+    <name>Statistics_Form</name>
+    <message>
+        <location filename="statistics_form.ui" line="14"/>
+        <source>Statistics</source>
+        <translation>통계</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.ui" line="157"/>
+        <location filename="statistics_form.ui" line="339"/>
+        <source>Keyword</source>
+        <translation>키워드</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.ui" line="176"/>
+        <location filename="statistics_form.ui" line="358"/>
+        <source>Search</source>
+        <translation>검색</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.ui" line="221"/>
+        <location filename="statistics_form.cpp" line="46"/>
+        <source>Recognition</source>
+        <translation>불인정액</translation>
+    </message>
+    <message>
+        <source>Total Subject</source>
+        <translation type="vanished">과제수 검색</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="26"/>
+        <location filename="statistics_form.cpp" line="30"/>
+        <source>BusinessType</source>
+        <translation>사업종류</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="26"/>
+        <location filename="statistics_form.cpp" line="30"/>
+        <source>ManagementAgency</source>
+        <translation>관리기관명</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="26"/>
+        <location filename="statistics_form.cpp" line="30"/>
+        <source>BusinessGroup1</source>
+        <translation>사업분류(대분류)</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="26"/>
+        <source>ProjectState</source>
+        <translation>상태</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.ui" line="39"/>
+        <location filename="statistics_form.cpp" line="41"/>
+        <source>SubjectNumber</source>
+        <translation>과제수</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="60"/>
+        <location filename="statistics_form.cpp" line="67"/>
+        <location filename="statistics_form.cpp" line="109"/>
+        <source>Warning</source>
+        <translation>경고</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="60"/>
+        <source>Database open error!</source>
+        <translation>데이터베이스 열기 에러!</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="67"/>
+        <location filename="statistics_form.cpp" line="109"/>
+        <source>Database Error!</source>
+        <translation>데이터베이스 에러!</translation>
     </message>
 </context>
 <context>

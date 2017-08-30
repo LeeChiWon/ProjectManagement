@@ -19,5 +19,6 @@
         <file>img/Search.png</file>
         <file>img/write.png</file>
         <file>img/change.png</file>
+        <file>img/statistics.png</file>
     </qresource>
 </RCC>

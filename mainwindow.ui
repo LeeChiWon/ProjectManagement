@@ -367,6 +367,7 @@ font: bold 10pt &quot;나눔고딕&quot;;}</string>
    <addaction name="actionUserRegistration"/>
    <addaction name="actionProjectInput"/>
    <addaction name="actionProjectSearch"/>
+   <addaction name="actionStatistics"/>
    <addaction name="actionConfiguration"/>
    <addaction name="actionExit"/>
   </widget>
@@ -451,6 +452,18 @@ font: bold 10pt &quot;나눔고딕&quot;;}</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionStatistics">
+   <property name="icon">
+    <iconset resource="projectmanagement.qrc">
+     <normaloff>:/img/statistics.png</normaloff>:/img/statistics.png</iconset>
+   </property>
+   <property name="text">
+    <string>Statistics</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
    </property>
   </action>
  </widget>

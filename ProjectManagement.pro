@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     tableprinter.cpp \
     projectinput_form.cpp \
     projectsearch_form.cpp \
-    projectresultinputdialog.cpp
+    projectresultinputdialog.cpp \
+    statistics_form.cpp
 
 HEADERS  += mainwindow.h \
     logindialog.h \
@@ -43,7 +44,8 @@ HEADERS  += mainwindow.h \
     tableprinter.h \
     projectinput_form.h \
     projectsearch_form.h \
-    projectresultinputdialog.h
+    projectresultinputdialog.h \
+    statistics_form.h
 
 FORMS    += mainwindow.ui \
     logindialog.ui \
@@ -52,7 +54,8 @@ FORMS    += mainwindow.ui \
     userregistration_form.ui \
     projectinput_form.ui \
     projectsearch_form.ui \
-    projectresultinputdialog.ui
+    projectresultinputdialog.ui \
+    statistics_form.ui
 
 RESOURCES += \
     projectmanagement.qrc

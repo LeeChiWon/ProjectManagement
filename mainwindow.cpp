@@ -226,3 +226,12 @@ void MainWindow::on_actionProjectSearch_triggered()
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
     }
 }
+
+void MainWindow::on_actionStatistics_triggered()
+{
+    if(!TabWidgetCompare(tr("Statistics")))
+    {
+        ui->tabWidget->addTab(new Statistics_Form,tr("Statistics"));
+        ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
+    }
+}

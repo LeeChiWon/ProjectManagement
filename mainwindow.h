@@ -8,6 +8,7 @@
 #include "userregistration_form.h"
 #include "projectinput_form.h"
 #include "projectsearch_form.h"
+#include "statistics_form.h"
 
 namespace Ui {
 class MainWindow;
@@ -32,6 +33,7 @@ private slots:
     void on_actionUserRegistration_triggered();
     void on_actionProjectInput_triggered();
     void on_actionProjectSearch_triggered();
+    void on_actionStatistics_triggered();
 
 protected:
     void hideEvent(QHideEvent *event);

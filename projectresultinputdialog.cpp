@@ -41,26 +41,62 @@ void ProjectResultInputDialog::mouseDoubleClickEvent(QMouseEvent *event)
     if((event->pos().x()>= ui->label_Acttach1->geometry().x()) && (event->pos().y()>= ui->label_Acttach1->geometry().y()) &&
             (event->pos().x()<= ui->label_Acttach1->geometry().bottomRight().x()) && (event->pos().y()<= ui->label_Acttach1->geometry().bottomRight().y()))
     {
-       QDesktopServices::openUrl(QUrl("file:///"+Acttach[0]));
+        if(!Acttach[0].isEmpty())
+        {
+            if(Acttach[0].contains("//"))
+            {
+                Acttach[0].replace("//","/");
+            }
+            QDesktopServices::openUrl(QUrl("file:///"+Acttach[0]));
+        }
     }
     if((event->pos().x()>= ui->label_Acttach2->geometry().x()) && (event->pos().y()>= ui->label_Acttach2->geometry().y()) &&
             (event->pos().x()<= ui->label_Acttach2->geometry().bottomRight().x()) && (event->pos().y()<= ui->label_Acttach2->geometry().bottomRight().y()))
     {
-       QDesktopServices::openUrl(QUrl("file:///"+Acttach[1]));
+        if(!Acttach[1].isEmpty())
+        {
+            if(Acttach[1].contains("//"))
+            {
+                Acttach[1].replace("//","/");
+            }
+            QDesktopServices::openUrl(QUrl("file:///"+Acttach[1]));
+        }
     }
     if((event->pos().x()>= ui->label_Acttach3->geometry().x()) && (event->pos().y()>= ui->label_Acttach3->geometry().y()) &&
             (event->pos().x()<= ui->label_Acttach3->geometry().bottomRight().x()) && (event->pos().y()<= ui->label_Acttach3->geometry().bottomRight().y()))
     {
-       QDesktopServices::openUrl(QUrl("file:///"+Acttach[2]));
-    }if((event->pos().x()>= ui->label_Acttach4->geometry().x()) && (event->pos().y()>= ui->label_Acttach4->geometry().y()) &&
+        if(!Acttach[2].isEmpty())
+        {
+            if(Acttach[2].contains("//"))
+            {
+                Acttach[2].replace("//","/");
+            }
+            QDesktopServices::openUrl(QUrl("file:///"+Acttach[2]));
+        }
+    }
+    if((event->pos().x()>= ui->label_Acttach4->geometry().x()) && (event->pos().y()>= ui->label_Acttach4->geometry().y()) &&
             (event->pos().x()<= ui->label_Acttach4->geometry().bottomRight().x()) && (event->pos().y()<= ui->label_Acttach4->geometry().bottomRight().y()))
     {
-       QDesktopServices::openUrl(QUrl("file:///"+Acttach[3]));
+        if(!Acttach[3].isEmpty())
+        {
+            if(Acttach[3].contains("//"))
+            {
+                Acttach[3].replace("//","/");
+            }
+            QDesktopServices::openUrl(QUrl("file:///"+Acttach[3]));
+        }
     }
     if((event->pos().x()>= ui->label_Acttach5->geometry().x()) && (event->pos().y()>= ui->label_Acttach5->geometry().y()) &&
             (event->pos().x()<= ui->label_Acttach5->geometry().bottomRight().x()) && (event->pos().y()<= ui->label_Acttach5->geometry().bottomRight().y()))
     {
-       QDesktopServices::openUrl(QUrl("file:///"+Acttach[4]));
+        if(!Acttach[4].isEmpty())
+        {
+            if(Acttach[4].contains("//"))
+            {
+                Acttach[4].replace("//","/");
+            }
+            QDesktopServices::openUrl(QUrl("file:///"+Acttach[4]));
+        }
     }
 }
 
