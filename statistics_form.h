@@ -26,7 +26,7 @@ private:
     QSettings *Setting;
 
     void ComboboxInit(int);
-    void TableWidgetInit(int,QString);
+    void TableWidgetInit(int);
     void DBInit();
     void DBShow(int, QString);
     QString QueryString(int,int);

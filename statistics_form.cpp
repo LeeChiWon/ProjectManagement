@@ -6,10 +6,10 @@ Statistics_Form::Statistics_Form(QWidget *parent) :
     ui(new Ui::Statistics_Form)
 {
     ui->setupUi(this);
-    for(int i=0; i<2; i++)
-    {
-        ComboboxInit(i);
-    }
+    ui->dateEdit_Recognition_FixedDate->setDate(QDate::currentDate());
+    ui->dateEdit_Recognition_ReceiptEndDate->setDate(QDate::currentDate());
+    ui->dateEdit_Recognition_ReceiptStartDate->setDate(QDate::currentDate());
+
     SettingInit();
 }
 
@@ -18,32 +18,20 @@ Statistics_Form::~Statistics_Form()
     delete ui;
 }
 
-void Statistics_Form::ComboboxInit(int Select)
-{
-    switch (Select) {
-    case TAB_SUBJECT:
-        ui->comboBox_SearchContent_SubjectNumber->clear();
-        ui->comboBox_SearchContent_SubjectNumber->addItems(QStringList()<<tr("BusinessType")<<tr("ManagementAgency")<<tr("BusinessGroup1")<<tr("ProjectState"));
-        break;
-    default:
-        ui->comboBox_SearchContent_Recognition->clear();
-        ui->comboBox_SearchContent_Recognition->addItems(QStringList()<<tr("BusinessType")<<tr("ManagementAgency")<<tr("BusinessGroup1"));
-        break;
-    }
-}
-
-void Statistics_Form::TableWidgetInit(int Select,QString ColumnName)
+void Statistics_Form::TableWidgetInit(int Select)
 {
     switch (Select) {
     case TAB_SUBJECT:
         ui->tableWidget_SubjectNumber->clear();
         ui->tableWidget_SubjectNumber->setRowCount(0);
-        ui->tableWidget_SubjectNumber->setHorizontalHeaderLabels(QStringList()<<ColumnName<<tr("SubjectNumber"));
+        ui->tableWidget_SubjectNumber->setHorizontalHeaderLabels(QStringList()<<tr("Managementagency")<<tr("BusinessGroup1")<<tr("TotalReceiptSubjectNumber")
+                                                                 <<tr("AccountsCompleteSubject")<<tr("RecognitionSubjectNumber")<<tr("RecognitionMoney"));
         break;
     default:
         ui->tableWidget_Recognition->clear();
         ui->tableWidget_Recognition->setRowCount(0);
-        ui->tableWidget_Recognition->setHorizontalHeaderLabels(QStringList()<<ColumnName<<tr("Recognition"));
+        ui->tableWidget_Recognition->setHorizontalHeaderLabels(QStringList()<<tr("Managementagency")<<tr("BusinessGroup1")<<tr("TotalReceiptSubjectNumber")
+                                                               <<tr("AccountsCompleteSubject")<<tr("RecognitionSubjectNumber")<<tr("Note"));
         break;
     }
 }
@@ -168,6 +156,7 @@ QString Statistics_Form::QueryString(int Select,int Cmd)
         switch (Select) {
         case TAB_SUBJECT:
             Query=QString("select projectstate, count(projectstate) as subjectnumber from project_management group by projectstate having count(projectstate)>=1");
+            //select managementagency,businessgroup1,count(*) as totalnumber from project_management where receiptdate between '2017-08-01' and '2017-08-05' group by managementagency,businessgroup1,projectstate
             break;
         default:
             break;

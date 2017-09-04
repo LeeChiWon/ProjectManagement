@@ -23,7 +23,7 @@ void ProjectResultInputDialog::on_pushButton_Close_clicked()
 void ProjectResultInputDialog::ComboboxInit()
 {
     ui->comboBox_ProjectState->clear();
-    ui->comboBox_ProjectState->addItems(QStringList()<<tr("ReceiptDate")<<tr("AccountsNotifyDate")<<tr("AccountsCompleteDate"));
+    ui->comboBox_ProjectState->addItems(QStringList()<<tr("Receipt")<<tr("AccountsNotify")<<tr("AccountsComplete"));
 }
 
 void ProjectResultInputDialog::InitString(QStringList List)
