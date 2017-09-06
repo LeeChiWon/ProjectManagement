@@ -6,6 +6,9 @@ Statistics_Form::Statistics_Form(QWidget *parent) :
     ui(new Ui::Statistics_Form)
 {
     ui->setupUi(this);
+    ui->dateEdit_SubjectNumber_FixedDate->setDate(QDate::currentDate());
+    ui->dateEdit_SubjectNumber_ReceiptStartDate->setDate(QDate::currentDate());
+    ui->dateEdit_SubjectNumber_ReceiptEndDate->setDate(QDate::currentDate());
     ui->dateEdit_Recognition_FixedDate->setDate(QDate::currentDate());
     ui->dateEdit_Recognition_ReceiptEndDate->setDate(QDate::currentDate());
     ui->dateEdit_Recognition_ReceiptStartDate->setDate(QDate::currentDate());
@@ -24,14 +27,16 @@ void Statistics_Form::TableWidgetInit(int Select)
     case TAB_SUBJECT:
         ui->tableWidget_SubjectNumber->clear();
         ui->tableWidget_SubjectNumber->setRowCount(0);
+        ui->tableWidget_SubjectNumber->setColumnCount(6);
         ui->tableWidget_SubjectNumber->setHorizontalHeaderLabels(QStringList()<<tr("Managementagency")<<tr("BusinessGroup1")<<tr("TotalReceiptSubjectNumber")
-                                                                 <<tr("AccountsCompleteSubject")<<tr("RecognitionSubjectNumber")<<tr("RecognitionMoney"));
+                                                                 <<tr("AccountsCompleteSubject")<<tr("NonSubjectNumber")<<tr("Note"));
         break;
     default:
         ui->tableWidget_Recognition->clear();
         ui->tableWidget_Recognition->setRowCount(0);
+        ui->tableWidget_Recognition->setColumnCount(7);
         ui->tableWidget_Recognition->setHorizontalHeaderLabels(QStringList()<<tr("Managementagency")<<tr("BusinessGroup1")<<tr("TotalReceiptSubjectNumber")
-                                                               <<tr("AccountsCompleteSubject")<<tr("RecognitionSubjectNumber")<<tr("Note"));
+                                                               <<tr("AccountsCompleteSubject")<<tr("RecognitionSubjectNumber")<<tr("RecognitionMoney")<<tr("Note"));
         break;
     }
 }
@@ -62,6 +67,12 @@ void Statistics_Form::DBShow(int Select, QString QueryStr)
     QSqlDatabase DB=QSqlDatabase::database("MainDB");
     ui->tableWidget_SubjectNumber->setSortingEnabled(false);
     ui->tableWidget_Recognition->setSortingEnabled(false);
+    TotalSubject.clear();
+    CompleteSubject.clear();
+    int TotalSubjectCount=0;
+    int CompleteSubjectCount=0;
+    int NonSubjectCount=0;
+
     try
     {
         if(!DB.isOpen())
@@ -71,23 +82,53 @@ void Statistics_Form::DBShow(int Select, QString QueryStr)
         }
 
         QSqlQuery query(DB);
-        query.exec(QueryStr);        
+        query.exec(QueryStr);
 
-        while(query.next())
+        switch (Select)
         {
-            switch (Select) {
-            case TAB_SUBJECT:
+        case TAB_SUBJECT:
+            Mapping(query,STATISTICS_ALLSUBJECTCOUNT);
+            query.exec(QueryString(TAB_SUBJECT,STATISTICS_COMPLETESUBJECTCOUNT));
+            Mapping(query,STATISTICS_COMPLETESUBJECTCOUNT);
+
+            for(int i=0; i<TotalSubject.count(); i++)
+            {
                 ui->tableWidget_SubjectNumber->setRowCount(ui->tableWidget_SubjectNumber->rowCount()+1);
-                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,0,new QTableWidgetItem(query.value(0).toString()));
-                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,1,new QTableWidgetItem(query.value(1).toString()));
-                break;
-            default:
-                ui->tableWidget_Recognition->setRowCount(ui->tableWidget_Recognition->rowCount()+1);
-                ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,0,new QTableWidgetItem(query.value(0).toString()));
-                ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,1,new QTableWidgetItem(query.value(1).toString()));
-                break;
+                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,0,new QTableWidgetItem(TotalSubject.keys().at(i).at(0)));
+                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,1,new QTableWidgetItem(TotalSubject.keys().at(i).at(1)));
+                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,2,new QTableWidgetItem(QString::number(TotalSubject.value(TotalSubject.keys().at(i)))));
+                TotalSubjectCount+=TotalSubject.value(TotalSubject.keys().at(i));
+                if(CompleteSubject.contains(TotalSubject.keys().at(i)))
+                {
+                   ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,3,new QTableWidgetItem(QString::number(CompleteSubject.value(TotalSubject.keys().at(i)))));
+                   CompleteSubjectCount+=CompleteSubject.value(TotalSubject.keys().at(i));
+                }
+                else
+                {
+                    ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,3,new QTableWidgetItem(QString::number(0)));
+                }
+                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,4,
+                                                       new QTableWidgetItem(QString::number(ui->tableWidget_SubjectNumber->item(ui->tableWidget_SubjectNumber->rowCount()-1,2)->text().toInt()-ui->tableWidget_SubjectNumber->item(ui->tableWidget_SubjectNumber->rowCount()-1,3)->text().toInt())));
+                NonSubjectCount+ui->tableWidget_SubjectNumber->item(ui->tableWidget_SubjectNumber->rowCount()-1,2)->text().toInt()-ui->tableWidget_SubjectNumber->item(ui->tableWidget_SubjectNumber->rowCount()-1,3)->text().toInt();
             }
+            ui->tableWidget_SubjectNumber->setRowCount(ui->tableWidget_SubjectNumber->rowCount()+1);
+            ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,0,new QTableWidgetItem(tr("Sum")));
+            ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,2,new QTableWidgetItem(QString::number(TotalSubjectCount)));
+            ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,3,new QTableWidgetItem(QString::number(CompleteSubjectCount)));
+            ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,4,new QTableWidgetItem(QString::number(NonSubjectCount)));
+
+           /* for(int i=0; i<6; i++)
+            {
+                ui->tableWidget_SubjectNumber->item(ui->tableWidget_SubjectNumber->rowCount()-1,i)->setBackgroundColor(qRgb(200,255,255));
+            }*/
+            break;
+        default:
+            Mapping(query,STATISTICS_ALLSUBJECTCOUNT);
+            query.exec(QueryString(Select,STATISTICS_COMPLETESUBJECTCOUNT));
+            Mapping(query,STATISTICS_COMPLETESUBJECTCOUNT);
+            break;
         }
+
 
         switch (Select) {
         case TAB_SUBJECT:
@@ -117,48 +158,52 @@ void Statistics_Form::SettingInit()
     Setting=new QSettings("EachOne","ProjectManagement",this);
 }
 
+void Statistics_Form::Mapping(QSqlQuery Query,int Cmd)
+{
+    while(Query.next())
+    {
+        switch(Cmd)
+        {
+        case STATISTICS_ALLSUBJECTCOUNT:
+            TotalSubject.insert(QStringList()<<Query.value("managementagency").toString()<<Query.value("businessgroup1").toString(),Query.value(2).toInt());
+            break;
+        case STATISTICS_COMPLETESUBJECTCOUNT:
+            CompleteSubject.insert(QStringList()<<Query.value("managementagency").toString()<<Query.value("businessgroup1").toString(),Query.value(2).toInt());
+            break;
+        }
+    }
+}
+
 QString Statistics_Form::QueryString(int Select,int Cmd)
 {
     QString Query;
 
     switch (Cmd) {
-    case STATISTICS_BUSINESSTYPE:
+    case STATISTICS_ALLSUBJECTCOUNT:
         switch (Select) {
         case TAB_SUBJECT:
-            Query=QString("select businesstype, count(businesstype) as subjectnumber from project_management group by businesstype having count(businesstype)>=1");
-            break;
-        default:
-            Query=QString("select businesstype, sum(recognition) as recognitionmoney from project_management group by businesstype");//having sum(recognition)>=1
+            Query=QString("select managementagency,businessgroup1,count(*) as totalsubjectcount from project_management where receiptdate between"
+                          "'%1' and '%2' group by managementagency,businessgroup1").arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"))
+                    .arg(ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"));
+        case TAB_RECOGNITION:
+            /* Query=QString("select managementagency,businessgroup1,count(*) as totalsubjectcount from project_management where receiptdate between"
+                          "'%1' and '%2' group by managementagency,businessgroup1").arg(ui->dateEdit_Recognition_ReceiptStartDate->date().toString("yyyy-MM-dd"))
+                    .arg(ui->dateEdit_Recognition_ReceiptEndDate->date().toString("yyyy-MM-dd"));*/
             break;
         }
         break;
-    case STATISTICS_MANAGEMENTAGENCY:
+    case STATISTICS_COMPLETESUBJECTCOUNT:
         switch (Select) {
         case TAB_SUBJECT:
-            Query=QString("select managementagency, count(managementagency) as subjectnumber from project_management group by managementagency having count(managementagency)>=1");
+            Query=QString("select managementagency,businessgroup1,count(*) as completesubjectcount from project_management where receiptdate between"
+                          "'%1' and '%2' and accountscompletedate<='%3' and projectstate='%4' group by managementagency,businessgroup1")
+                    .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
+                    .arg(ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("AccountsComplete"));
+
             break;
         default:
+
             Query=QString("select managementagency, sum(recognition) as recognitionmoney from project_management group by managementagency");
-            break;
-        }
-        break;
-    case STATISTICS_BUSINESSGROUP1:
-        switch (Select) {
-        case TAB_SUBJECT:
-            Query=QString("select businessgroup1, count(businessgroup1) as subjectnumber from project_management group by businessgroup1 having count(businessgroup1)>=1");
-            break;
-        default:
-            Query=QString("select businessgroup1, sum(recognition) as recognitionmoney from project_management group by businessgroup1");
-            break;
-        }
-        break;
-    case STATISTICS_PROJECTSTATE:
-        switch (Select) {
-        case TAB_SUBJECT:
-            Query=QString("select projectstate, count(projectstate) as subjectnumber from project_management group by projectstate having count(projectstate)>=1");
-            //select managementagency,businessgroup1,count(*) as totalnumber from project_management where receiptdate between '2017-08-01' and '2017-08-05' group by managementagency,businessgroup1,projectstate
-            break;
-        default:
             break;
         }
         break;
@@ -168,12 +213,12 @@ QString Statistics_Form::QueryString(int Select,int Cmd)
 
 void Statistics_Form::on_pushButton_Search_SubjectNumber_clicked()
 {    
-    TableWidgetInit(TAB_SUBJECT,ui->comboBox_SearchContent_SubjectNumber->currentText());
-    DBShow(TAB_SUBJECT,QueryString(TAB_SUBJECT,ui->comboBox_SearchContent_SubjectNumber->currentIndex()));
+    TableWidgetInit(TAB_SUBJECT);
+    DBShow(TAB_SUBJECT,QueryString(TAB_SUBJECT,STATISTICS_ALLSUBJECTCOUNT));
 }
 
 void Statistics_Form::on_pushButton_Search_Recognition_clicked()
 {
-    TableWidgetInit(TAB_RECOGNITION,ui->comboBox_SearchContent_Recognition->currentText());
-    DBShow(TAB_RECOGNITION,QueryString(TAB_RECOGNITION,ui->comboBox_SearchContent_Recognition->currentIndex()));
+    TableWidgetInit(TAB_RECOGNITION);
+    DBShow(TAB_RECOGNITION,QueryString(TAB_RECOGNITION,STATISTICS_ALLSUBJECTCOUNT));
 }

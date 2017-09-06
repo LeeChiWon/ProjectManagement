@@ -24,6 +24,8 @@ private slots:
 private:
     Ui::Statistics_Form *ui;
     QSettings *Setting;
+    QMap<QStringList,int> TotalSubject;
+    QMap<QStringList,int> CompleteSubject;
 
     void ComboboxInit(int);
     void TableWidgetInit(int);
@@ -31,6 +33,7 @@ private:
     void DBShow(int, QString);
     QString QueryString(int,int);
     void SettingInit();
+    void Mapping(QSqlQuery,int);
 };
 
 #endif // STATISTICS_FORM_H

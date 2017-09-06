@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
+    <width>567</width>
     <height>502</height>
    </rect>
   </property>
@@ -32,7 +32,7 @@
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -53,21 +53,8 @@
        </property>
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="1">
-          <widget class="QComboBox" name="comboBox_SearchContent_SubjectNumber">
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>20</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>200</width>
-             <height>20</height>
-            </size>
-           </property>
-          </widget>
+         <item row="0" column="2">
+          <widget class="QDateEdit" name="dateEdit_SubjectNumber_ReceiptEndDate"/>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label">
@@ -154,11 +141,103 @@
             <enum>QFrame::StyledPanel</enum>
            </property>
            <property name="text">
-            <string>Keyword</string>
+            <string>ReceiptDate</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="2">
+         <item row="0" column="1">
+          <widget class="QDateEdit" name="dateEdit_SubjectNumber_ReceiptStartDate"/>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_4">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>255</red>
+                 <green>255</green>
+                 <blue>255</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>200</red>
+                 <green>255</green>
+                 <blue>255</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>255</red>
+                 <green>255</green>
+                 <blue>255</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>200</red>
+                 <green>255</green>
+                 <blue>255</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>200</red>
+                 <green>255</green>
+                 <blue>255</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>200</red>
+                 <green>255</green>
+                 <blue>255</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="autoFillBackground">
+            <bool>true</bool>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="text">
+            <string>FixedDate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
           <widget class="QPushButton" name="pushButton_Search_SubjectNumber">
            <property name="minimumSize">
             <size>
@@ -180,6 +259,9 @@
              <normaloff>:/img/Search.png</normaloff>:/img/Search.png</iconset>
            </property>
           </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QDateEdit" name="dateEdit_SubjectNumber_FixedDate"/>
          </item>
         </layout>
        </item>
@@ -208,10 +290,8 @@
           <bool>true</bool>
          </property>
          <property name="columnCount">
-          <number>2</number>
+          <number>0</number>
          </property>
-         <column/>
-         <column/>
         </widget>
        </item>
       </layout>
@@ -233,6 +313,22 @@
        <property name="bottomMargin">
         <number>0</number>
        </property>
+       <item row="1" column="0" colspan="2">
+        <widget class="QTableWidget" name="tableWidget_Recognition">
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="columnCount">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="2">
@@ -446,24 +542,6 @@
           <widget class="QDateEdit" name="dateEdit_Recognition_FixedDate"/>
          </item>
         </layout>
-       </item>
-       <item row="1" column="0" colspan="2">
-        <widget class="QTableWidget" name="tableWidget_Recognition">
-         <property name="editTriggers">
-          <set>QAbstractItemView::NoEditTriggers</set>
-         </property>
-         <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectRows</enum>
-         </property>
-         <property name="sortingEnabled">
-          <bool>true</bool>
-         </property>
-         <property name="columnCount">
-          <number>2</number>
-         </property>
-         <column/>
-         <column/>
-        </widget>
        </item>
       </layout>
      </widget>

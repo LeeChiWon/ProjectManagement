@@ -564,13 +564,11 @@
     </message>
     <message>
         <location filename="projectresultinputdialog.ui" line="285"/>
-        <location filename="projectresultinputdialog.cpp" line="26"/>
         <source>ReceiptDate</source>
         <translation>접수일</translation>
     </message>
     <message>
         <location filename="projectresultinputdialog.ui" line="380"/>
-        <location filename="projectresultinputdialog.cpp" line="26"/>
         <source>AccountsNotifyDate</source>
         <translation>정산통보일</translation>
     </message>
@@ -615,7 +613,6 @@
     </message>
     <message>
         <location filename="projectresultinputdialog.ui" line="1292"/>
-        <location filename="projectresultinputdialog.cpp" line="26"/>
         <source>AccountsCompleteDate</source>
         <translation>정산완료일</translation>
     </message>
@@ -688,6 +685,21 @@
         <location filename="projectresultinputdialog.ui" line="3387"/>
         <source>Print</source>
         <translation>인쇄</translation>
+    </message>
+    <message>
+        <location filename="projectresultinputdialog.cpp" line="26"/>
+        <source>AccountsNotify</source>
+        <translation>정산중</translation>
+    </message>
+    <message>
+        <location filename="projectresultinputdialog.cpp" line="26"/>
+        <source>AccountsComplete</source>
+        <translation>정산완료</translation>
+    </message>
+    <message>
+        <location filename="projectresultinputdialog.cpp" line="26"/>
+        <source>Receipt</source>
+        <translation>접수</translation>
     </message>
     <message>
         <location filename="projectresultinputdialog.cpp" line="112"/>
@@ -916,20 +928,29 @@
         <translation>통계</translation>
     </message>
     <message>
-        <location filename="statistics_form.ui" line="157"/>
-        <location filename="statistics_form.ui" line="339"/>
         <source>Keyword</source>
-        <translation>키워드</translation>
+        <translation type="vanished">키워드</translation>
     </message>
     <message>
-        <location filename="statistics_form.ui" line="176"/>
-        <location filename="statistics_form.ui" line="358"/>
+        <location filename="statistics_form.ui" line="144"/>
+        <location filename="statistics_form.ui" line="537"/>
+        <source>ReceiptDate</source>
+        <translation>접수일</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.ui" line="236"/>
+        <location filename="statistics_form.ui" line="422"/>
+        <source>FixedDate</source>
+        <translation>기준일</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.ui" line="255"/>
+        <location filename="statistics_form.ui" line="444"/>
         <source>Search</source>
         <translation>검색</translation>
     </message>
     <message>
-        <location filename="statistics_form.ui" line="221"/>
-        <location filename="statistics_form.cpp" line="46"/>
+        <location filename="statistics_form.ui" line="301"/>
         <source>Recognition</source>
         <translation>불인정액</translation>
     </message>
@@ -938,51 +959,89 @@
         <translation type="vanished">과제수 검색</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="26"/>
-        <location filename="statistics_form.cpp" line="30"/>
         <source>BusinessType</source>
-        <translation>사업종류</translation>
+        <translation type="vanished">사업종류</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="26"/>
-        <location filename="statistics_form.cpp" line="30"/>
         <source>ManagementAgency</source>
-        <translation>관리기관명</translation>
+        <translation type="vanished">관리기관명</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="26"/>
-        <location filename="statistics_form.cpp" line="30"/>
+        <location filename="statistics_form.cpp" line="31"/>
+        <location filename="statistics_form.cpp" line="38"/>
         <source>BusinessGroup1</source>
         <translation>사업분류(대분류)</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="26"/>
         <source>ProjectState</source>
-        <translation>상태</translation>
+        <translation type="vanished">상태</translation>
     </message>
     <message>
         <location filename="statistics_form.ui" line="39"/>
-        <location filename="statistics_form.cpp" line="41"/>
         <source>SubjectNumber</source>
         <translation>과제수</translation>
     </message>
     <message>
+        <location filename="statistics_form.cpp" line="31"/>
+        <location filename="statistics_form.cpp" line="38"/>
+        <source>Managementagency</source>
+        <translation>관리기관</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="31"/>
+        <location filename="statistics_form.cpp" line="38"/>
+        <source>TotalReceiptSubjectNumber</source>
+        <translation>전체접수과제수</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="32"/>
+        <location filename="statistics_form.cpp" line="39"/>
+        <source>AccountsCompleteSubject</source>
+        <translation>정산완료과제수</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="32"/>
+        <source>NonSubjectNumber</source>
+        <translation>미완료과제수</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="39"/>
+        <source>RecognitionSubjectNumber</source>
+        <translation>불인정과제수</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="39"/>
+        <source>RecognitionMoney</source>
+        <translation>불인정액</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="32"/>
+        <location filename="statistics_form.cpp" line="39"/>
+        <source>Note</source>
+        <translation>비고</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="53"/>
         <location filename="statistics_form.cpp" line="60"/>
-        <location filename="statistics_form.cpp" line="67"/>
-        <location filename="statistics_form.cpp" line="109"/>
+        <location filename="statistics_form.cpp" line="132"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="60"/>
+        <location filename="statistics_form.cpp" line="53"/>
         <source>Database open error!</source>
         <translation>데이터베이스 열기 에러!</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="67"/>
-        <location filename="statistics_form.cpp" line="109"/>
+        <location filename="statistics_form.cpp" line="60"/>
+        <location filename="statistics_form.cpp" line="132"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="184"/>
+        <source>AccountsComplete</source>
+        <translation>정산완료</translation>
     </message>
 </context>
 <context>
