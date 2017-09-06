@@ -391,7 +391,7 @@
     <message>
         <location filename="projectinput_form.ui" line="413"/>
         <source>AgreementStartDate</source>
-        <translation>협약기간시간날짜</translation>
+        <translation>협약기간시작날짜</translation>
     </message>
     <message>
         <location filename="projectinput_form.ui" line="508"/>
@@ -1023,7 +1023,7 @@
     <message>
         <location filename="statistics_form.cpp" line="53"/>
         <location filename="statistics_form.cpp" line="60"/>
-        <location filename="statistics_form.cpp" line="132"/>
+        <location filename="statistics_form.cpp" line="149"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
@@ -1034,14 +1034,49 @@
     </message>
     <message>
         <location filename="statistics_form.cpp" line="60"/>
-        <location filename="statistics_form.cpp" line="132"/>
+        <location filename="statistics_form.cpp" line="149"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="184"/>
+        <location filename="statistics_form.cpp" line="115"/>
+        <source>Sum</source>
+        <translation>합계</translation>
+    </message>
+    <message>
+        <location filename="statistics_form.cpp" line="201"/>
+        <location filename="statistics_form.cpp" line="270"/>
+        <location filename="statistics_form.cpp" line="278"/>
+        <location filename="statistics_form.cpp" line="294"/>
+        <location filename="statistics_form.cpp" line="302"/>
         <source>AccountsComplete</source>
         <translation>정산완료</translation>
+    </message>
+</context>
+<context>
+    <name>SubjectListDialog</name>
+    <message>
+        <location filename="subjectlistdialog.ui" line="14"/>
+        <source>SubjectList</source>
+        <translation>과제리스트</translation>
+    </message>
+    <message>
+        <location filename="subjectlistdialog.cpp" line="53"/>
+        <location filename="subjectlistdialog.cpp" line="67"/>
+        <location filename="subjectlistdialog.cpp" line="74"/>
+        <source>Warning</source>
+        <translation>경고</translation>
+    </message>
+    <message>
+        <location filename="subjectlistdialog.cpp" line="53"/>
+        <location filename="subjectlistdialog.cpp" line="74"/>
+        <source>Database Error!</source>
+        <translation>데이터베이스 에러!</translation>
+    </message>
+    <message>
+        <location filename="subjectlistdialog.cpp" line="67"/>
+        <source>Database open error!</source>
+        <translation>데이터베이스 열기 에러!</translation>
     </message>
 </context>
 <context>

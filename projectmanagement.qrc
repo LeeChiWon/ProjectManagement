@@ -20,5 +20,6 @@
         <file>img/write.png</file>
         <file>img/change.png</file>
         <file>img/statistics.png</file>
+        <file>img/list.png</file>
     </qresource>
 </RCC>

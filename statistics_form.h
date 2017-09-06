@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "define.h"
+#include "subjectlistdialog.h"
 
 namespace Ui {
 class Statistics_Form;
@@ -15,11 +16,15 @@ class Statistics_Form : public QWidget
 public:
     explicit Statistics_Form(QWidget *parent = 0);
     ~Statistics_Form();
-
+signals:
+    void setTitle(QString);
+    void DBShow(QString);
 private slots: 
     void on_pushButton_Search_SubjectNumber_clicked();
 
     void on_pushButton_Search_Recognition_clicked();
+
+    void on_tableWidget_SubjectNumber_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::Statistics_Form *ui;
