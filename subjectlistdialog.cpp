@@ -16,6 +16,7 @@ SubjectListDialog::~SubjectListDialog()
 
 void SubjectListDialog::SetTitle(QString Label)
 {
+    qDebug()<<Label;
     ui->label_Title->setText(Label);
 }
 
@@ -34,10 +35,12 @@ void SubjectListDialog::DBShow(QString QueryStr)
 
         QSqlQuery query(DB);
         query.exec(QueryStr);
-        qDebug()<<query.lastQuery()<<query.lastError();
+        qDebug()<<query.lastQuery()<<query.lastError()<<query.size();
+
 
         while(query.next())
         {
+            qDebug()<<query.value(0).toString();
             ui->listWidget->addItem(query.value("projectname").toString());
             if(ui->listWidget->count()%2==0)
             {

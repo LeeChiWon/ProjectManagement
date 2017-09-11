@@ -27,9 +27,8 @@ void Statistics_Form::TableWidgetInit(int Select)
     case TAB_SUBJECT:
         ui->tableWidget_SubjectNumber->clear();
         ui->tableWidget_SubjectNumber->setRowCount(0);
-        ui->tableWidget_SubjectNumber->setColumnCount(6);
-        ui->tableWidget_SubjectNumber->setHorizontalHeaderLabels(QStringList()<<tr("Managementagency")<<tr("BusinessGroup1")<<tr("TotalReceiptSubjectNumber")
-                                                                 <<tr("AccountsCompleteSubject")<<tr("NonSubjectNumber")<<tr("Note"));
+        ui->tableWidget_SubjectNumber->setColumnCount(8);
+        ui->tableWidget_SubjectNumber->setHorizontalHeaderLabels(QStringList()<<tr("Managementagency")<<tr("BusinessGroup1")<<tr("TotalReceiptSubject")<<tr("Before\nCompleteSubject")<<tr("Before\nNonSubject")<<tr("After\nCompleteSubject")<<tr("After\nNonSubject")<<tr("Note"));
         break;
     default:
         ui->tableWidget_Recognition->clear();
@@ -65,13 +64,17 @@ void Statistics_Form::DBInit()
 void Statistics_Form::DBShow(int Select, QString QueryStr)
 {
     QSqlDatabase DB=QSqlDatabase::database("MainDB");
+
     ui->tableWidget_SubjectNumber->setSortingEnabled(false);
     ui->tableWidget_Recognition->setSortingEnabled(false);
-    TotalSubject.clear();
-    CompleteSubject.clear();
+
+    TableWidgetInit(Select);
+
     int TotalSubjectCount=0;
-    int CompleteSubjectCount=0;
-    int NonSubjectCount=0;
+    int BeforeCompleteCount=0;
+    int BeforeNonCount=0;
+    int AfterCompleteCount=0;
+    int AfterNonCount=0;
 
     try
     {
@@ -82,65 +85,68 @@ void Statistics_Form::DBShow(int Select, QString QueryStr)
         }
 
         QSqlQuery query(DB);
-        query.exec(QueryStr);
 
         switch (Select)
         {
         case TAB_SUBJECT:
-            Mapping(query,STATISTICS_ALLSUBJECTCOUNT);
-            query.exec(QueryString(TAB_SUBJECT,STATISTICS_COMPLETESUBJECTCOUNT));
-            Mapping(query,STATISTICS_COMPLETESUBJECTCOUNT);
+            query.exec(QueryString(TAB_SUBJECT));
 
-            for(int i=0; i<TotalSubject.count(); i++)
+            while(query.next())
             {
                 ui->tableWidget_SubjectNumber->setRowCount(ui->tableWidget_SubjectNumber->rowCount()+1);
-                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,0,new QTableWidgetItem(TotalSubject.keys().at(i).at(0)));
-                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,1,new QTableWidgetItem(TotalSubject.keys().at(i).at(1)));
-                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,2,new QTableWidgetItem(QString::number(TotalSubject.value(TotalSubject.keys().at(i)))));
-                TotalSubjectCount+=TotalSubject.value(TotalSubject.keys().at(i));
-                if(CompleteSubject.contains(TotalSubject.keys().at(i)))
+                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,0,new QTableWidgetItem(query.value(0).toString()));
+                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,1,new QTableWidgetItem(query.value(1).toString()));
+
+                for(int i=2; i<7; i++)
                 {
-                    ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,3,new QTableWidgetItem(QString::number(CompleteSubject.value(TotalSubject.keys().at(i)))));
-                    CompleteSubjectCount+=CompleteSubject.value(TotalSubject.keys().at(i));
+                    if(query.value(i).toInt()<=0)
+                    {
+                        ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,i,new QTableWidgetItem("0"));
+                    }
+                    else
+                    {
+                        ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,i,new QTableWidgetItem(query.value(i).toString()));
+
+                        switch(i)
+                        {
+                        case STATISTICS_ALL:
+                            TotalSubjectCount+=query.value(i).toInt();
+                            break;
+                        case STATISTICS_BEFORECOMPLETE:
+                            BeforeCompleteCount+=query.value(i).toInt();
+                            break;
+                        case STATISTICS_BEFORENON:
+                            BeforeNonCount+=query.value(i).toInt();
+                            break;
+                        case STATISTICS_AFTERCOMPLETE:
+                            AfterCompleteCount+=query.value(i).toInt();
+                            break;
+                        case STATISTICS_AFTERNON:
+                            AfterNonCount+=query.value(i).toInt();
+                            break;
+                        }
+                    }
                 }
-                else
-                {
-                    ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,3,new QTableWidgetItem(QString::number(0)));
-                }
-                ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,4,
-                                                       new QTableWidgetItem(QString::number(ui->tableWidget_SubjectNumber->item(ui->tableWidget_SubjectNumber->rowCount()-1,2)->text().toInt()-ui->tableWidget_SubjectNumber->item(ui->tableWidget_SubjectNumber->rowCount()-1,3)->text().toInt())));
-                NonSubjectCount+=ui->tableWidget_SubjectNumber->item(ui->tableWidget_SubjectNumber->rowCount()-1,2)->text().toInt()-ui->tableWidget_SubjectNumber->item(ui->tableWidget_SubjectNumber->rowCount()-1,3)->text().toInt();
             }
             ui->tableWidget_SubjectNumber->setRowCount(ui->tableWidget_SubjectNumber->rowCount()+1);
             ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,0,new QTableWidgetItem(tr("Sum")));
             ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,2,new QTableWidgetItem(QString::number(TotalSubjectCount)));
-            ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,3,new QTableWidgetItem(QString::number(CompleteSubjectCount)));
-            ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,4,new QTableWidgetItem(QString::number(NonSubjectCount)));
+            ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,3,new QTableWidgetItem(QString::number(BeforeCompleteCount)));
+            ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,4,new QTableWidgetItem(QString::number(BeforeNonCount)));
+            ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,5,new QTableWidgetItem(QString::number(AfterCompleteCount)));
+            ui->tableWidget_SubjectNumber->setItem(ui->tableWidget_SubjectNumber->rowCount()-1,6,new QTableWidgetItem(QString::number(AfterNonCount)));
 
-            /* for(int i=0; i<6; i++)
-            {
-                ui->tableWidget_SubjectNumber->item(ui->tableWidget_SubjectNumber->rowCount()-1,i)->setBackgroundColor(qRgb(200,255,255));
-            }*/
-            break;
-        default:
-            Mapping(query,STATISTICS_ALLSUBJECTCOUNT);
-            query.exec(QueryString(Select,STATISTICS_COMPLETESUBJECTCOUNT));
-            Mapping(query,STATISTICS_COMPLETESUBJECTCOUNT);
-            break;
-        }
-
-
-        switch (Select) {
-        case TAB_SUBJECT:
             ui->tableWidget_SubjectNumber->resizeColumnsToContents();
             ui->tableWidget_SubjectNumber->resizeRowsToContents();
             break;
+
         default:
+            query.exec(QueryString(Select));
+
             ui->tableWidget_Recognition->resizeColumnsToContents();
             ui->tableWidget_Recognition->resizeRowsToContents();
             break;
         }
-
         DB.close();
     }
 
@@ -158,54 +164,26 @@ void Statistics_Form::SettingInit()
     Setting=new QSettings("EachOne","ProjectManagement",this);
 }
 
-void Statistics_Form::Mapping(QSqlQuery Query,int Cmd)
-{
-    while(Query.next())
-    {
-        switch(Cmd)
-        {
-        case STATISTICS_ALLSUBJECTCOUNT:
-            TotalSubject.insert(QStringList()<<Query.value("managementagency").toString()<<Query.value("businessgroup1").toString(),Query.value(2).toInt());
-            break;
-        case STATISTICS_COMPLETESUBJECTCOUNT:
-            CompleteSubject.insert(QStringList()<<Query.value("managementagency").toString()<<Query.value("businessgroup1").toString(),Query.value(2).toInt());
-            break;
-        }
-    }
-}
 
-QString Statistics_Form::QueryString(int Select,int Cmd)
+QString Statistics_Form::QueryString(int Select)
 {
     QString Query;
 
-    switch (Cmd) {
-    case STATISTICS_ALLSUBJECTCOUNT:
-        switch (Select) {
-        case TAB_SUBJECT:
-            Query=QString("select managementagency,businessgroup1,count(*) as totalsubjectcount from project_management where receiptdate between"
-                          "'%1' and '%2' group by managementagency,businessgroup1").arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"))
-                    .arg(ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"));
-        case TAB_RECOGNITION:
-            /* Query=QString("select managementagency,businessgroup1,count(*) as totalsubjectcount from project_management where receiptdate between"
+    switch (Select)
+    {
+    case TAB_SUBJECT:
+        Query=QString("select managementagency, businessgroup1,count(*) totalcount,"
+                      "sum(case when projectstate='%1' and accountscompletedate<='%2' then 1 end) beforecompletecount,"
+                      "sum(case when (projectstate='%3' or projectstate='%4') and accountscompletedate<='%2' then 1 end) beforenoncount,"
+                      "sum(case when projectstate='%1' and accountscompletedate>'%2' then 1 end) aftercompletecount,"
+                      "sum(case when (projectstate='%3' or projectstate='%4') and accountscompletedate>'%2' then 1 end) afternoncount "
+                      "from project_management where receiptdate between '%5' and '%6' group by managementagency, businessgroup1;")
+                .arg(tr("AccountsComplete"),ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("Receipt"),tr("AccountsNotify"))
+                .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"));
+    case TAB_RECOGNITION:
+        /* Query=QString("select managementagency,businessgroup1,count(*) as totalsubjectcount from project_management where receiptdate between"
                           "'%1' and '%2' group by managementagency,businessgroup1").arg(ui->dateEdit_Recognition_ReceiptStartDate->date().toString("yyyy-MM-dd"))
                     .arg(ui->dateEdit_Recognition_ReceiptEndDate->date().toString("yyyy-MM-dd"));*/
-            break;
-        }
-        break;
-    case STATISTICS_COMPLETESUBJECTCOUNT:
-        switch (Select) {
-        case TAB_SUBJECT:
-            Query=QString("select managementagency,businessgroup1,count(*) as completesubjectcount from project_management where receiptdate between"
-                          "'%1' and '%2' and accountscompletedate<='%3' and projectstate='%4' group by managementagency,businessgroup1")
-                    .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
-                    .arg(ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("AccountsComplete"));
-
-            break;
-        default:
-
-            Query=QString("select managementagency, sum(recognition) as recognitionmoney from project_management group by managementagency");
-            break;
-        }
         break;
     }
     return Query;
@@ -214,13 +192,13 @@ QString Statistics_Form::QueryString(int Select,int Cmd)
 void Statistics_Form::on_pushButton_Search_SubjectNumber_clicked()
 {    
     TableWidgetInit(TAB_SUBJECT);
-    DBShow(TAB_SUBJECT,QueryString(TAB_SUBJECT,STATISTICS_ALLSUBJECTCOUNT));
+    DBShow(TAB_SUBJECT,QueryString(TAB_SUBJECT));
 }
 
 void Statistics_Form::on_pushButton_Search_Recognition_clicked()
 {
     TableWidgetInit(TAB_RECOGNITION);
-    DBShow(TAB_RECOGNITION,QueryString(TAB_RECOGNITION,STATISTICS_ALLSUBJECTCOUNT));
+    DBShow(TAB_RECOGNITION,QueryString(TAB_RECOGNITION));
 }
 
 void Statistics_Form::on_tableWidget_SubjectNumber_doubleClicked(const QModelIndex &index)
@@ -228,18 +206,29 @@ void Statistics_Form::on_tableWidget_SubjectNumber_doubleClicked(const QModelInd
     SubjectListDialog Dialog;
     connect(this,SIGNAL(setTitle(QString)),&Dialog,SLOT(SetTitle(QString)));
     connect(this,SIGNAL(DBShow(QString)),&Dialog,SLOT(DBShow(QString)));
-
-    switch(index.column())
+    if(index.column()>=2 && index.column()<=6)
     {
-    case COLUMN_TOTALSUBJECTCOUNT:
-        if(ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_TOTALSUBJECTCOUNT)->text()=="0")
+        if(ui->tableWidget_SubjectNumber->item(index.row(),index.column())->text()=="0" &&
+                ui->tableWidget_SubjectNumber->item(index.row(),index.column())->text().isEmpty())
         {
             return;
         }
-        emit setTitle(QString("%1 & %2 & %3").arg(ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_MANAGEMENTAGENCY)->text(),
-                                                  ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_BUSINESSGROUP1)->text(),
-                                                  ui->tableWidget_SubjectNumber->horizontalHeaderItem(COLUMN_TOTALSUBJECTCOUNT)->text()));
 
+        if(index.row()==ui->tableWidget_SubjectNumber->rowCount()-1)
+        {
+            emit setTitle(QString("%1 & %2").arg(tr("Sum"),ui->tableWidget_SubjectNumber->horizontalHeaderItem(index.column())->text()));
+        }
+        else
+        {
+            emit setTitle(QString("%1 & %2 & %3").arg(ui->tableWidget_SubjectNumber->item(index.row(),0)->text(),
+                                                      ui->tableWidget_SubjectNumber->item(index.row(),1)->text(),
+                                                      ui->tableWidget_SubjectNumber->horizontalHeaderItem(index.column())->text()));
+        }
+    }
+
+    switch(index.column())
+    {
+    case STATISTICS_ALL:
         if(index.row()==ui->tableWidget_SubjectNumber->rowCount()-1)
         {
             emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2'")
@@ -249,20 +238,12 @@ void Statistics_Form::on_tableWidget_SubjectNumber_doubleClicked(const QModelInd
         else
         {
             emit DBShow(QString("select projectname from project_management where managementagency='%1' and businessgroup1='%2' and receiptdate between '%3' and '%4'")
-                        .arg(ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_MANAGEMENTAGENCY)->text(),ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_BUSINESSGROUP1)->text())
+                        .arg(ui->tableWidget_SubjectNumber->item(index.row(),0)->text(),ui->tableWidget_SubjectNumber->item(index.row(),1)->text())
                         .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd")));
         }
-
         Dialog.exec();
         break;
-    case COLUMN_COMPLETESUBJECTCOUNT:
-        if(ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_COMPLETESUBJECTCOUNT)->text()=="0")
-        {
-            return;
-        }
-        emit setTitle(QString("%1 & %2 & %3").arg(ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_MANAGEMENTAGENCY)->text(),
-                                                  ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_BUSINESSGROUP1)->text(),
-                                                  ui->tableWidget_SubjectNumber->horizontalHeaderItem(COLUMN_COMPLETESUBJECTCOUNT)->text()));
+    case STATISTICS_BEFORECOMPLETE:
         if(index.row()==ui->tableWidget_SubjectNumber->rowCount()-1)
         {
             emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and accountscompletedate<='%3' and projectstate='%4'")
@@ -273,33 +254,60 @@ void Statistics_Form::on_tableWidget_SubjectNumber_doubleClicked(const QModelInd
         {
             emit DBShow(QString("select projectname from project_management where managementagency='%1' and businessgroup1='%2' and receiptdate between '%3' and '%4'"
                                 " and accountscompletedate<='%5' and projectstate='%6'")
-                        .arg(ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_MANAGEMENTAGENCY)->text(),ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_BUSINESSGROUP1)->text())
+                        .arg(ui->tableWidget_SubjectNumber->item(index.row(),0)->text(),ui->tableWidget_SubjectNumber->item(index.row(),1)->text())
                         .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
                         .arg(ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("AccountsComplete")));
         }
         Dialog.exec();
         break;
-    case COLUMN_NONSUBJECTCOUNT:
-        if(ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_NONSUBJECTCOUNT)->text()=="0")
-        {
-            return;
-        }
-        emit setTitle(QString("%1 & %2 & %3").arg(ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_MANAGEMENTAGENCY)->text(),
-                                                  ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_BUSINESSGROUP1)->text(),
-                                                  ui->tableWidget_SubjectNumber->horizontalHeaderItem(COLUMN_NONSUBJECTCOUNT)->text()));
+    case STATISTICS_BEFORENON:
         if(index.row()==ui->tableWidget_SubjectNumber->rowCount()-1)
         {
-            emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and accountscompletedate<='%3' and projectstate not like '%4'")
+           emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and accountscompletedate between '%1' and '%5' and (projectstate='%4' or projectstate='%5')")
+                        .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
+                        .arg(ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("Receipt"),tr("AccountsNotify")));
+        }
+        else
+        {
+            emit DBShow(QString("select projectname from project_management where managementagency='%1' and businessgroup1='%2' and receiptdate between '%3' and '%4'"
+                                " and accountscompletedate between '%3' and '%5' and (projectstate='%6' or projectstate='%7')")
+                        .arg(ui->tableWidget_SubjectNumber->item(index.row(),0)->text(),ui->tableWidget_SubjectNumber->item(index.row(),1)->text())
+                        .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
+                        .arg(ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("Receipt"),tr("AccountsNotify")));
+        }
+        Dialog.exec();
+        break;
+    case STATISTICS_AFTERCOMPLETE:
+        if(index.row()==ui->tableWidget_SubjectNumber->rowCount()-1)
+        {
+            emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and accountscompletedate>'%3' and projectstate='%4'")
                         .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
                         .arg(ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("AccountsComplete")));
         }
         else
         {
             emit DBShow(QString("select projectname from project_management where managementagency='%1' and businessgroup1='%2' and receiptdate between '%3' and '%4'"
-                                " and accountscompletedate<='%5' and projectstate not like '%6'")
-                        .arg(ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_MANAGEMENTAGENCY)->text(),ui->tableWidget_SubjectNumber->item(index.row(),COLUMN_BUSINESSGROUP1)->text())
+                                " and accountscompletedate>'%5' and projectstate='%6'")
+                        .arg(ui->tableWidget_SubjectNumber->item(index.row(),0)->text(),ui->tableWidget_SubjectNumber->item(index.row(),1)->text())
                         .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
                         .arg(ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("AccountsComplete")));
+        }
+        Dialog.exec();
+        break;
+    case STATISTICS_AFTERNON:
+        if(index.row()==ui->tableWidget_SubjectNumber->rowCount()-1)
+        {
+           emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and (projectstate='%3' or projectstate='%4')")
+                        .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
+                        .arg(tr("Receipt"),tr("AccountsNotify")));
+        }
+        else
+        {
+            emit DBShow(QString("select projectname from project_management where managementagency='%1' and businessgroup1='%2' and receiptdate between '%3' and '%4'"
+                                " and (projectstate='%5' or projectstate='%6')")
+                        .arg(ui->tableWidget_SubjectNumber->item(index.row(),0)->text(),ui->tableWidget_SubjectNumber->item(index.row(),1)->text())
+                        .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
+                        .arg(tr("Receipt"),tr("AccountsNotify")));
         }
         Dialog.exec();
         break;

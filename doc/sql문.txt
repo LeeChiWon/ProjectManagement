@@ -1,0 +1,9 @@
+elect managementagency, businessgroup1,count(*) totalcount, 
+sum(case when projectstate='정산완료' and accountscompletedate<='2017-08-06' then 1 end) beforecompletecount,
+sum(case when projectstate='접수' or projectstate='정산중' and accountscompletedate<='2017-08-06' then 1 end) beforenoncount,
+sum(case when projectstate='정산완료' and accountscompletedate>'2017-08-06' then 1 end) aftercompletecount,
+sum(case when projectstate='접수' or projectstate='정산중' then 1 end) afternoncount
+from project_management where receiptdate between '2017-08-01' and '2017-08-06' group by managementagency, businessgroup1;
+
+
+select projectname from project_management where managementagency='한국산업진흥원' and businessgroup1='지역혁신인력양성사업' and receiptdate between '2017-08-01' and '2017-08-06' and accountscompletedate<='2017-08-06' and (projectstate='정산중' or projectstate='접수')

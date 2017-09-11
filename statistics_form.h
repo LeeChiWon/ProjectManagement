@@ -21,24 +21,19 @@ signals:
     void DBShow(QString);
 private slots: 
     void on_pushButton_Search_SubjectNumber_clicked();
-
     void on_pushButton_Search_Recognition_clicked();
-
     void on_tableWidget_SubjectNumber_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::Statistics_Form *ui;
     QSettings *Setting;
-    QMap<QStringList,int> TotalSubject;
-    QMap<QStringList,int> CompleteSubject;
 
     void ComboboxInit(int);
     void TableWidgetInit(int);
     void DBInit();
     void DBShow(int, QString);
-    QString QueryString(int,int);
-    void SettingInit();
-    void Mapping(QSqlQuery,int);
+    QString QueryString(int);
+    void SettingInit();   
 };
 
 #endif // STATISTICS_FORM_H
