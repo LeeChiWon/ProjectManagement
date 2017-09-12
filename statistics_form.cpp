@@ -181,9 +181,7 @@ QString Statistics_Form::QueryString(int Select)
                 .arg(tr("AccountsComplete"),ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("Receipt"),tr("AccountsNotify"))
                 .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"));
     case TAB_RECOGNITION:
-        /* Query=QString("select managementagency,businessgroup1,count(*) as totalsubjectcount from project_management where receiptdate between"
-                          "'%1' and '%2' group by managementagency,businessgroup1").arg(ui->dateEdit_Recognition_ReceiptStartDate->date().toString("yyyy-MM-dd"))
-                    .arg(ui->dateEdit_Recognition_ReceiptEndDate->date().toString("yyyy-MM-dd"));*/
+
         break;
     }
     return Query;
