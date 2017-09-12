@@ -174,9 +174,9 @@ QString Statistics_Form::QueryString(int Select)
     case TAB_SUBJECT:
         Query=QString("select managementagency, businessgroup1,count(*) totalcount,"
                       "sum(case when projectstate='%1' and accountscompletedate<='%2' then 1 end) beforecompletecount,"
-                      "sum(case when (projectstate='%3' or projectstate='%4') and accountscompletedate<='%2' then 1 end) beforenoncount,"
+                      "sum(case when projectstate='%3' or projectstate='%4' or accountscompletedate>'%2' then 1 end) beforenoncount,"
                       "sum(case when projectstate='%1' and accountscompletedate>'%2' then 1 end) aftercompletecount,"
-                      "sum(case when (projectstate='%3' or projectstate='%4') and accountscompletedate>'%2' then 1 end) afternoncount "
+                      "sum(case when projectstate='%3' or projectstate='%4' then 1 end) afternoncount "
                       "from project_management where receiptdate between '%5' and '%6' group by managementagency, businessgroup1;")
                 .arg(tr("AccountsComplete"),ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("Receipt"),tr("AccountsNotify"))
                 .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"));
@@ -208,7 +208,7 @@ void Statistics_Form::on_tableWidget_SubjectNumber_doubleClicked(const QModelInd
     connect(this,SIGNAL(DBShow(QString)),&Dialog,SLOT(DBShow(QString)));
     if(index.column()>=2 && index.column()<=6)
     {
-        if(ui->tableWidget_SubjectNumber->item(index.row(),index.column())->text()=="0" &&
+        if(ui->tableWidget_SubjectNumber->item(index.row(),index.column())->text()=="0" ||
                 ui->tableWidget_SubjectNumber->item(index.row(),index.column())->text().isEmpty())
         {
             return;
@@ -263,14 +263,14 @@ void Statistics_Form::on_tableWidget_SubjectNumber_doubleClicked(const QModelInd
     case STATISTICS_BEFORENON:
         if(index.row()==ui->tableWidget_SubjectNumber->rowCount()-1)
         {
-           emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and accountscompletedate between '%1' and '%5' and (projectstate='%4' or projectstate='%5')")
+           emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and (projectstate='%4' or projectstate='%5' or accountscompletedate>'%3')")
                         .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
                         .arg(ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("Receipt"),tr("AccountsNotify")));
         }
         else
         {
             emit DBShow(QString("select projectname from project_management where managementagency='%1' and businessgroup1='%2' and receiptdate between '%3' and '%4'"
-                                " and accountscompletedate between '%3' and '%5' and (projectstate='%6' or projectstate='%7')")
+                                " and  (projectstate='%6' or projectstate='%7' or accountscompletedate>'%5')")
                         .arg(ui->tableWidget_SubjectNumber->item(index.row(),0)->text(),ui->tableWidget_SubjectNumber->item(index.row(),1)->text())
                         .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
                         .arg(ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("Receipt"),tr("AccountsNotify")));

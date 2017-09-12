@@ -19,13 +19,17 @@ public:
 private slots:
     void SetTitle(QString);
     void DBShow(QString);
+    void ExcelSave(bool clicked);
+    void on_listWidget_customContextMenuRequested(const QPoint &pos);
 
 private:
     Ui::SubjectListDialog *ui;
     QSettings *Setting;
+    QMenu *ContextMenu;
 
     void DBInit();
     void SettingInit();
+    void ContextMenuInit();
 };
 
 #endif // SUBJECTLISTDIALOG_H
