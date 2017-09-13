@@ -9,9 +9,8 @@ Statistics_Form::Statistics_Form(QWidget *parent) :
     ui->dateEdit_SubjectNumber_FixedDate->setDate(QDate::currentDate());
     ui->dateEdit_SubjectNumber_ReceiptStartDate->setDate(QDate::currentDate());
     ui->dateEdit_SubjectNumber_ReceiptEndDate->setDate(QDate::currentDate());
-    ui->dateEdit_Recognition_FixedDate->setDate(QDate::currentDate());
-    ui->dateEdit_Recognition_ReceiptEndDate->setDate(QDate::currentDate());
-    ui->dateEdit_Recognition_ReceiptStartDate->setDate(QDate::currentDate());
+    ui->dateEdit_Recognition_EndDate->setDate(QDate::currentDate());
+    ui->dateEdit_Recognition_StartDate->setDate(QDate::currentDate());
 
     SettingInit();
 }
@@ -33,9 +32,9 @@ void Statistics_Form::TableWidgetInit(int Select)
     default:
         ui->tableWidget_Recognition->clear();
         ui->tableWidget_Recognition->setRowCount(0);
-        ui->tableWidget_Recognition->setColumnCount(7);
-        ui->tableWidget_Recognition->setHorizontalHeaderLabels(QStringList()<<tr("Managementagency")<<tr("BusinessGroup1")<<tr("TotalReceiptSubjectNumber")
-                                                               <<tr("AccountsCompleteSubject")<<tr("RecognitionSubjectNumber")<<tr("RecognitionMoney")<<tr("Note"));
+        ui->tableWidget_Recognition->setColumnCount(6);
+        ui->tableWidget_Recognition->setHorizontalHeaderLabels(QStringList()<<tr("Managementagency")<<tr("BusinessGroup1")<<tr("TotalSubjectNumber")
+                                                               <<tr("RecognitionSubjectNumber")<<tr("RecognitionMoney")<<tr("Note"));
         break;
     }
 }
@@ -75,6 +74,8 @@ void Statistics_Form::DBShow(int Select, QString QueryStr)
     int BeforeNonCount=0;
     int AfterCompleteCount=0;
     int AfterNonCount=0;
+    int Recognitioncount=0;
+    int Recognitionmoney=0;
 
     try
     {
@@ -89,7 +90,7 @@ void Statistics_Form::DBShow(int Select, QString QueryStr)
         switch (Select)
         {
         case TAB_SUBJECT:
-            query.exec(QueryString(TAB_SUBJECT));
+            query.exec(QueryStr);
 
             while(query.next())
             {
@@ -141,7 +142,46 @@ void Statistics_Form::DBShow(int Select, QString QueryStr)
             break;
 
         default:
-            query.exec(QueryString(Select));
+            query.exec(QueryStr);
+
+            while(query.next())
+            {
+                ui->tableWidget_Recognition->setRowCount(ui->tableWidget_Recognition->rowCount()+1);
+                ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,0,new QTableWidgetItem(query.value(0).toString()));
+                ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,1,new QTableWidgetItem(query.value(1).toString()));
+
+                for(int i=2; i<5; i++)
+                {
+                    if(query.value(i).toInt()<=0)
+                    {
+                        ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,i,new QTableWidgetItem("0"));
+                    }
+                    else
+                    {
+                        switch(i)
+                        {
+                        case STATISTICS_ALL:
+                            TotalSubjectCount+=query.value(i).toInt();
+                            ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,i,new QTableWidgetItem(query.value(i).toString()));
+                            break;
+                        case STATISTICS_RECOGNITION:
+                            Recognitioncount+=query.value(i).toInt();
+                            ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,i,new QTableWidgetItem(query.value(i).toString()));
+                            break;
+                        case STATISTICS_RECOGNITIONMONEY:
+                            ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,i,new QTableWidgetItem(QString("%L1").arg(query.value(i).toInt())));
+                            Recognitionmoney+=query.value(i).toInt();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            ui->tableWidget_Recognition->setRowCount(ui->tableWidget_Recognition->rowCount()+1);
+            ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,0,new QTableWidgetItem(tr("Sum")));
+            ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,2,new QTableWidgetItem(QString::number(TotalSubjectCount)));
+            ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,3,new QTableWidgetItem(QString::number(Recognitioncount)));
+            ui->tableWidget_Recognition->setItem(ui->tableWidget_Recognition->rowCount()-1,4,new QTableWidgetItem(QString("%L1").arg(Recognitionmoney)));
 
             ui->tableWidget_Recognition->resizeColumnsToContents();
             ui->tableWidget_Recognition->resizeRowsToContents();
@@ -181,7 +221,12 @@ QString Statistics_Form::QueryString(int Select)
                 .arg(tr("AccountsComplete"),ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("Receipt"),tr("AccountsNotify"))
                 .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"));
     case TAB_RECOGNITION:
-
+        Query=QString("select managementagency, businessgroup1,"
+                      "sum(case when projectstate='%1' then 1 end) totalcount,"
+                      "sum(case when recognition>0 then 1 end) recognitioncount,"
+                      "sum(recognition) recognitionmoney " //cast(recognition as int)
+                      "from project_management where accountscompletedate between '%2' and '%3' group by managementagency, businessgroup1;")
+                .arg(tr("AccountsComplete"),ui->dateEdit_Recognition_StartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_Recognition_EndDate->date().toString("yyyy-MM-dd"));
         break;
     }
     return Query;
@@ -261,7 +306,7 @@ void Statistics_Form::on_tableWidget_SubjectNumber_doubleClicked(const QModelInd
     case STATISTICS_BEFORENON:
         if(index.row()==ui->tableWidget_SubjectNumber->rowCount()-1)
         {
-           emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and (projectstate='%4' or projectstate='%5' or accountscompletedate>'%3')")
+            emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and (projectstate='%4' or projectstate='%5' or accountscompletedate>'%3')")
                         .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
                         .arg(ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("Receipt"),tr("AccountsNotify")));
         }
@@ -295,7 +340,7 @@ void Statistics_Form::on_tableWidget_SubjectNumber_doubleClicked(const QModelInd
     case STATISTICS_AFTERNON:
         if(index.row()==ui->tableWidget_SubjectNumber->rowCount()-1)
         {
-           emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and (projectstate='%3' or projectstate='%4')")
+            emit DBShow(QString("select projectname from project_management where receiptdate between '%1' and '%2' and (projectstate='%3' or projectstate='%4')")
                         .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
                         .arg(tr("Receipt"),tr("AccountsNotify")));
         }
@@ -306,6 +351,82 @@ void Statistics_Form::on_tableWidget_SubjectNumber_doubleClicked(const QModelInd
                         .arg(ui->tableWidget_SubjectNumber->item(index.row(),0)->text(),ui->tableWidget_SubjectNumber->item(index.row(),1)->text())
                         .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"))
                         .arg(tr("Receipt"),tr("AccountsNotify")));
+        }
+        Dialog.exec();
+        break;
+    }
+}
+
+void Statistics_Form::on_tableWidget_Recognition_doubleClicked(const QModelIndex &index)
+{
+    SubjectListDialog Dialog;
+    connect(this,SIGNAL(setTitle(QString)),&Dialog,SLOT(SetTitle(QString)));
+    connect(this,SIGNAL(DBShow(QString)),&Dialog,SLOT(DBShow(QString)));
+
+    if(index.column()>=2 && index.column()<=4)
+    {
+        if(ui->tableWidget_Recognition->item(index.row(),index.column())->text()=="0" ||
+                ui->tableWidget_Recognition->item(index.row(),index.column())->text().isEmpty())
+        {
+            return;
+        }
+
+        if(index.row()==ui->tableWidget_Recognition->rowCount()-1)
+        {
+            emit setTitle(QString("%1 & %2").arg(tr("Sum"),ui->tableWidget_Recognition->horizontalHeaderItem(index.column())->text()));
+        }
+        else
+        {
+            emit setTitle(QString("%1 & %2 & %3").arg(ui->tableWidget_Recognition->item(index.row(),0)->text(),
+                                                      ui->tableWidget_Recognition->item(index.row(),1)->text(),
+                                                      ui->tableWidget_Recognition->horizontalHeaderItem(index.column())->text()));
+        }
+    }
+
+    switch(index.column())
+    {
+    case STATISTICS_ALL:
+        if(index.row()==ui->tableWidget_Recognition->rowCount()-1)
+        {
+            emit DBShow(QString("select projectname from project_management where accountscompletedate between '%1' and '%2'")
+                        .arg(ui->dateEdit_Recognition_StartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_Recognition_EndDate->date().toString("yyyy-MM-dd")));
+        }
+
+        else
+        {
+            emit DBShow(QString("select projectname from project_management where managementagency='%1' and businessgroup1='%2' and accountscompletedate between '%3' and '%4'")
+                        .arg(ui->tableWidget_Recognition->item(index.row(),0)->text(),ui->tableWidget_Recognition->item(index.row(),1)->text())
+                        .arg(ui->dateEdit_Recognition_StartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_Recognition_EndDate->date().toString("yyyy-MM-dd")));
+        }
+        Dialog.exec();
+        break;
+    case STATISTICS_RECOGNITION:
+        if(index.row()==ui->tableWidget_Recognition->rowCount()-1)
+        {
+            emit DBShow(QString("select projectname from project_management where accountscompletedate between '%1' and '%2' and cast(recognition as int)>0")
+                        .arg(ui->dateEdit_Recognition_StartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_Recognition_EndDate->date().toString("yyyy-MM-dd")));
+        }
+        else
+        {
+            emit DBShow(QString("select projectname from project_management where managementagency='%1' and businessgroup1='%2' and accountscompletedate between '%3' and '%4'"
+                                " and cast(recognition as int)>0")
+                        .arg(ui->tableWidget_Recognition->item(index.row(),0)->text(),ui->tableWidget_Recognition->item(index.row(),1)->text())
+                        .arg(ui->dateEdit_Recognition_StartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_Recognition_EndDate->date().toString("yyyy-MM-dd")));
+        }
+        Dialog.exec();
+        break;
+    case STATISTICS_RECOGNITIONMONEY:
+        if(index.row()==ui->tableWidget_Recognition->rowCount()-1)
+        {
+            emit DBShow(QString("select projectname from project_management where accountscompletedate between '%1' and '%2' and cast(recognition as int)>0")
+                        .arg(ui->dateEdit_Recognition_StartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_Recognition_EndDate->date().toString("yyyy-MM-dd")));
+        }
+        else
+        {
+            emit DBShow(QString("select projectname from project_management where managementagency='%1' and businessgroup1='%2' and accountscompletedate between '%3' and '%4'"
+                                " and cast(recognition as int)>0")
+                        .arg(ui->tableWidget_Recognition->item(index.row(),0)->text(),ui->tableWidget_Recognition->item(index.row(),1)->text())
+                        .arg(ui->dateEdit_Recognition_StartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_Recognition_EndDate->date().toString("yyyy-MM-dd")));
         }
         Dialog.exec();
         break;

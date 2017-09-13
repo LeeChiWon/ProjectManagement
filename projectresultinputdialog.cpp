@@ -148,10 +148,10 @@ QString ProjectResultInputDialog::QueryString(int Cmd)
         }
 
         Query.append(QString(",execution_cash='%1',execution_goods='%2',executionbalance='%3',appearinterest='%4',interestuse='%5',interestbalance='%6'"
-                             ",carriedexecution='%7',carriedbusiness='%8',recognition='%9',governmentsubsidy='%10',return='%11'").arg(ui->lineEdit_Excution_Cash->text(),ui->lineEdit_Excution_Goods->text())
-                     .arg(ui->lineEdit_ExcutionBalance->text(),ui->lineEdit_Appearinterest->text(),ui->lineEdit_Interestuse->text(),ui->lineEdit_Interestbalance->text())
-                     .arg(ui->lineEdit_Carriedexecution->text(),ui->lineEdit_Carriedbusiness->text(),ui->lineEdit_Recognition->text(),ui->lineEdit_Governmentsubsidy->text())
-                     .arg(ui->lineEdit_Return->text()));
+                             ",carriedexecution='%7',carriedbusiness='%8',recognition='%9',governmentsubsidy='%10',return='%11'").arg(ui->lineEdit_Excution_Cash->text().replace(",",""),ui->lineEdit_Excution_Goods->text().replace(",",""))
+                     .arg(ui->lineEdit_ExcutionBalance->text().replace(",",""),ui->lineEdit_Appearinterest->text().replace(",",""),ui->lineEdit_Interestuse->text().replace(",",""),ui->lineEdit_Interestbalance->text().replace(",",""))
+                     .arg(ui->lineEdit_Carriedexecution->text().replace(",",""),ui->lineEdit_Carriedbusiness->text().replace(",",""),ui->lineEdit_Recognition->text().replace(",",""),ui->lineEdit_Governmentsubsidy->text().replace(",",""))
+                     .arg(ui->lineEdit_Return->text().replace(",","")));
 
         QString DBPath=Setting->value("Configuration/DBPath").toString().replace("/ProjectManagement.db","");
         for(int i=0; i<5; i++)

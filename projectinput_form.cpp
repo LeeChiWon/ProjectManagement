@@ -24,8 +24,8 @@ void ProjectInput_Form::on_pushButton_Save_clicked()
         QString Values=QString("'%1','%2','%3','%4','%5','%6','%7','%8','%9','%10','%11','%12','%13','%14','%15','%16','%17','%18'")
                 .arg(ui->lineEdit_BusinessType->text(),ui->lineEdit_ProjectNumber->text(),ui->lineEdit_ManagementAgency->text(),ui->lineEdit_BusinessGroup1->text(),ui->lineEdit_BusinessGroup2->text(),ui->lineEdit_BusinessGroup3->text())
                 .arg(ui->lineEdit_Organization->text(),ui->lineEdit_Manager->text(),ui->lineEdit_ProjectName->text(),ui->dateEdit_AgreementStart->date().toString("yyyy-MM-dd"),ui->dateEdit_AgreementEnd->date().toString("yyyy-MM-dd"))
-                .arg(ui->lineEdit_Contribution->text(),ui->lineEdit_LardaceousSpleen->text(),ui->lineEdit_Deductible_Cash->text(),ui->lineEdit_Deductible_Goods->text(),ui->lineEdit_ProjectCost->text())
-                .arg(ui->lineEdit_TotalProjectCost->text(),ui->lineEdit_CarriedCost->text());
+                .arg(ui->lineEdit_Contribution->text().replace(",",""),ui->lineEdit_LardaceousSpleen->text().replace(",",""),ui->lineEdit_Deductible_Cash->text().replace(",",""),ui->lineEdit_Deductible_Goods->text().replace(",",""),ui->lineEdit_ProjectCost->text().replace(",",""))
+                .arg(ui->lineEdit_TotalProjectCost->text().replace(",",""),ui->lineEdit_CarriedCost->text().replace(",",""));
         if(Input(Values))
         {
             UIInit();

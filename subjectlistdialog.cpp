@@ -106,7 +106,7 @@ void SubjectListDialog::ExcelSave(bool clicked)
     {
         QXlsx::Document xlsx(FileName);
         QStringList ColumnTitle=QStringList()<<tr("No")<<tr("SubjectName");
-        int ColumnWidth[2]={5,50};
+        int ColumnWidth[2]={7,50};
         QXlsx::Format format;
 
         format.setBottomBorderStyle(QXlsx::Format::BorderDouble);
