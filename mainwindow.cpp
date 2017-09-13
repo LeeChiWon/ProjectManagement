@@ -235,3 +235,8 @@ void MainWindow::on_actionStatistics_triggered()
         ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
     }
 }
+
+void MainWindow::on_actionHelp_triggered()
+{
+    QDesktopServices::openUrl(QUrl(QApplication::applicationDirPath().prepend("file:///")+"/help.pdf"));
+}

@@ -21,5 +21,6 @@
         <file>img/change.png</file>
         <file>img/statistics.png</file>
         <file>img/list.png</file>
+        <file>img/help.png</file>
     </qresource>
 </RCC>

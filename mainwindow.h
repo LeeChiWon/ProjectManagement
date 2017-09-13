@@ -35,6 +35,8 @@ private slots:
     void on_actionProjectSearch_triggered();
     void on_actionStatistics_triggered();
 
+    void on_actionHelp_triggered();
+
 protected:
     void hideEvent(QHideEvent *event);
 

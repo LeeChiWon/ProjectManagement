@@ -11,6 +11,7 @@ Statistics_Form::Statistics_Form(QWidget *parent) :
     ui->dateEdit_SubjectNumber_ReceiptEndDate->setDate(QDate::currentDate());
     ui->dateEdit_Recognition_EndDate->setDate(QDate::currentDate());
     ui->dateEdit_Recognition_StartDate->setDate(QDate::currentDate());
+    ui->tabWidget->setCurrentIndex(0);
 
     SettingInit();
 }
@@ -66,8 +67,6 @@ void Statistics_Form::DBShow(int Select, QString QueryStr)
 
     ui->tableWidget_SubjectNumber->setSortingEnabled(false);
     ui->tableWidget_Recognition->setSortingEnabled(false);
-
-    TableWidgetInit(Select);
 
     int TotalSubjectCount=0;
     int BeforeCompleteCount=0;
@@ -220,6 +219,7 @@ QString Statistics_Form::QueryString(int Select)
                       "from project_management where receiptdate between '%5' and '%6' group by managementagency, businessgroup1;")
                 .arg(tr("AccountsComplete"),ui->dateEdit_SubjectNumber_FixedDate->date().toString("yyyy-MM-dd"),tr("Receipt"),tr("AccountsNotify"))
                 .arg(ui->dateEdit_SubjectNumber_ReceiptStartDate->date().toString("yyyy-MM-dd"),ui->dateEdit_SubjectNumber_ReceiptEndDate->date().toString("yyyy-MM-dd"));
+        break;
     case TAB_RECOGNITION:
         Query=QString("select managementagency, businessgroup1,"
                       "sum(case when projectstate='%1' then 1 end) totalcount,"
