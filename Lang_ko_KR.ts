@@ -226,90 +226,100 @@
         <translation>과제관리시스템</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="206"/>
+        <location filename="mainwindow.ui" line="325"/>
         <location filename="mainwindow.cpp" line="146"/>
         <source>Main</source>
         <translation>메인화면</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="220"/>
+        <location filename="mainwindow.ui" line="175"/>
         <source>Logout</source>
         <translation>로그아웃</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="234"/>
+        <location filename="mainwindow.ui" line="241"/>
         <source>ID</source>
         <translation>아이디</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="397"/>
+        <location filename="mainwindow.ui" line="398"/>
         <location filename="mainwindow.cpp" line="33"/>
         <location filename="mainwindow.cpp" line="35"/>
         <source>Configuration</source>
         <translation>환경설정</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="400"/>
+        <location filename="mainwindow.ui" line="401"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="409"/>
+        <location filename="mainwindow.ui" line="410"/>
         <source>Exit</source>
         <translation>종료</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="412"/>
+        <location filename="mainwindow.ui" line="413"/>
         <source>Ctrl+X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="424"/>
+        <location filename="mainwindow.ui" line="425"/>
         <location filename="mainwindow.cpp" line="178"/>
         <location filename="mainwindow.cpp" line="180"/>
         <source>UserRegistration</source>
         <translation>사용자관리</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="427"/>
+        <location filename="mainwindow.ui" line="428"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="439"/>
+        <location filename="mainwindow.ui" line="440"/>
         <location filename="mainwindow.cpp" line="214"/>
         <location filename="mainwindow.cpp" line="216"/>
         <source>ProjectInput</source>
         <translation>정산과제입력</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="442"/>
+        <location filename="mainwindow.ui" line="443"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="451"/>
+        <location filename="mainwindow.ui" line="452"/>
         <location filename="mainwindow.cpp" line="223"/>
         <location filename="mainwindow.cpp" line="225"/>
         <source>ProjectSearch</source>
         <translation>과제내역조회</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="454"/>
+        <location filename="mainwindow.ui" line="455"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="463"/>
+        <location filename="mainwindow.ui" line="464"/>
         <location filename="mainwindow.cpp" line="232"/>
         <location filename="mainwindow.cpp" line="234"/>
         <source>Statistics</source>
         <translation>통계</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="466"/>
+        <location filename="mainwindow.ui" line="467"/>
         <source>Ctrl+H</source>
         <translation>Ctrl+H</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="476"/>
+        <source>Help</source>
+        <translation>도움말</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="479"/>
+        <source>F1</source>
+        <translation>F1</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="69"/>
@@ -970,8 +980,8 @@
         <translation type="vanished">관리기관명</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="30"/>
-        <location filename="statistics_form.cpp" line="36"/>
+        <location filename="statistics_form.cpp" line="31"/>
+        <location filename="statistics_form.cpp" line="37"/>
         <source>BusinessGroup1</source>
         <translation>사업분류(대분류)</translation>
     </message>
@@ -985,34 +995,34 @@
         <translation>과제수</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="30"/>
-        <location filename="statistics_form.cpp" line="36"/>
+        <location filename="statistics_form.cpp" line="31"/>
+        <location filename="statistics_form.cpp" line="37"/>
         <source>Managementagency</source>
         <translation>관리기관</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="30"/>
+        <location filename="statistics_form.cpp" line="31"/>
         <source>Before
 CompleteSubject</source>
         <translation>기준일이전
 정산완료과제수</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="30"/>
+        <location filename="statistics_form.cpp" line="31"/>
         <source>Before
 NonSubject</source>
         <translation>기준일이전
 미완료과제수</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="30"/>
+        <location filename="statistics_form.cpp" line="31"/>
         <source>After
 CompleteSubject</source>
         <translation>기준일이후
 정산완료과제수</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="30"/>
+        <location filename="statistics_form.cpp" line="31"/>
         <source>After
 NonSubject</source>
         <translation>기준일이후
@@ -1032,23 +1042,23 @@ NonSubject</source>
         <translation type="vanished">기준일이전\n정산완료과제수</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="37"/>
+        <location filename="statistics_form.cpp" line="38"/>
         <source>RecognitionSubjectNumber</source>
         <translation>불인정과제수</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="37"/>
+        <location filename="statistics_form.cpp" line="38"/>
         <source>RecognitionMoney</source>
         <translation>불인정액</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="30"/>
-        <location filename="statistics_form.cpp" line="37"/>
+        <location filename="statistics_form.cpp" line="31"/>
+        <location filename="statistics_form.cpp" line="38"/>
         <source>Note</source>
         <translation>비고</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="30"/>
+        <location filename="statistics_form.cpp" line="31"/>
         <source>TotalReceiptSubject</source>
         <translation>총접수과제수</translation>
     </message>
@@ -1065,59 +1075,61 @@ NonSubject</source>
         <translation type="vanished">기준일이후\n미완료과제수</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="36"/>
+        <location filename="statistics_form.cpp" line="37"/>
         <source>TotalSubjectNumber</source>
         <translation>총과제수</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="51"/>
-        <location filename="statistics_form.cpp" line="58"/>
-        <location filename="statistics_form.cpp" line="190"/>
+        <location filename="statistics_form.cpp" line="52"/>
+        <location filename="statistics_form.cpp" line="59"/>
+        <location filename="statistics_form.cpp" line="194"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="51"/>
+        <location filename="statistics_form.cpp" line="52"/>
         <source>Database open error!</source>
         <translation>데이터베이스 열기 에러!</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="58"/>
-        <location filename="statistics_form.cpp" line="190"/>
+        <location filename="statistics_form.cpp" line="59"/>
+        <location filename="statistics_form.cpp" line="194"/>
         <source>Database Error!</source>
         <translation>데이터베이스 에러!</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="133"/>
-        <location filename="statistics_form.cpp" line="257"/>
+        <location filename="statistics_form.cpp" line="132"/>
+        <location filename="statistics_form.cpp" line="180"/>
+        <location filename="statistics_form.cpp" line="262"/>
+        <location filename="statistics_form.cpp" line="376"/>
         <source>Sum</source>
         <translation>합계</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="216"/>
-        <location filename="statistics_form.cpp" line="224"/>
-        <location filename="statistics_form.cpp" line="289"/>
-        <location filename="statistics_form.cpp" line="297"/>
-        <location filename="statistics_form.cpp" line="323"/>
-        <location filename="statistics_form.cpp" line="331"/>
+        <location filename="statistics_form.cpp" line="220"/>
+        <location filename="statistics_form.cpp" line="229"/>
+        <location filename="statistics_form.cpp" line="294"/>
+        <location filename="statistics_form.cpp" line="302"/>
+        <location filename="statistics_form.cpp" line="328"/>
+        <location filename="statistics_form.cpp" line="336"/>
         <source>AccountsComplete</source>
         <translation>정산완료</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="216"/>
-        <location filename="statistics_form.cpp" line="306"/>
-        <location filename="statistics_form.cpp" line="314"/>
-        <location filename="statistics_form.cpp" line="340"/>
-        <location filename="statistics_form.cpp" line="348"/>
+        <location filename="statistics_form.cpp" line="220"/>
+        <location filename="statistics_form.cpp" line="311"/>
+        <location filename="statistics_form.cpp" line="319"/>
+        <location filename="statistics_form.cpp" line="345"/>
+        <location filename="statistics_form.cpp" line="353"/>
         <source>Receipt</source>
         <translation>접수</translation>
     </message>
     <message>
-        <location filename="statistics_form.cpp" line="216"/>
-        <location filename="statistics_form.cpp" line="306"/>
-        <location filename="statistics_form.cpp" line="314"/>
-        <location filename="statistics_form.cpp" line="340"/>
-        <location filename="statistics_form.cpp" line="348"/>
+        <location filename="statistics_form.cpp" line="220"/>
+        <location filename="statistics_form.cpp" line="311"/>
+        <location filename="statistics_form.cpp" line="319"/>
+        <location filename="statistics_form.cpp" line="345"/>
+        <location filename="statistics_form.cpp" line="353"/>
         <source>AccountsNotify</source>
         <translation>정산중</translation>
     </message>
