@@ -109,7 +109,7 @@ void UserRegistration_Form::UserShow()
         ui->tableWidget->clear();
         ui->tableWidget->setRowCount(0);
         TableWidgetInit();
-
+        DB.transaction();
         QSqlQuery query(DB);
 
         query.exec("select * from user_management");
@@ -133,6 +133,7 @@ void UserRegistration_Form::UserShow()
 
         ui->tableWidget->resizeColumnsToContents();
         ui->tableWidget->resizeRowsToContents();
+        DB.commit();
         DB.close();
     }
 
@@ -213,12 +214,13 @@ bool UserRegistration_Form::UserModify()
             QSqlDatabase::removeDatabase("MainDB");
             DBInit();
         }
+        DB.transaction();
         QSqlQuery query(DB);
 
         query.exec(QString("update user_management set name='%1', joindate='%2', resigndate='%3', admin=%4 where companynumber='%5'")
                    .arg(ui->lineEdit_Name->text()).arg(ui->dateEdit_JoinDate->date().toString("yyyy-MM-dd"),ui->dateEdit_ResignDate->date().toString("yyyy-MM-dd"))
                    .arg(ui->checkBox_Admin->isChecked()).arg(ui->lineEdit_CompanyNum->text()));
-
+        DB.commit();
         DB.close();
     }
 
@@ -242,11 +244,12 @@ bool UserRegistration_Form::UserDelete()
             QSqlDatabase::removeDatabase("MainDB");
             DBInit();
         }
+        DB.transaction();
         QSqlQuery query(DB);
 
         query.exec(QString("delete from user_management where companynumber='%1'")
                    .arg(ui->lineEdit_CompanyNum->text()));
-
+        DB.commit();
         DB.close();
     }
 

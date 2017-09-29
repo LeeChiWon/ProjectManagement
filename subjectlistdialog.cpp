@@ -31,7 +31,7 @@ void SubjectListDialog::DBShow(QString QueryStr)
             QSqlDatabase::removeDatabase("MainDB");
             DBInit();
         }
-
+        DB.transaction();
         QSqlQuery query(DB);
         query.exec(QueryStr);
 
@@ -43,7 +43,7 @@ void SubjectListDialog::DBShow(QString QueryStr)
                 ui->listWidget->item(ui->listWidget->count()-1)->setBackgroundColor(qRgb(200,255,255));
             }
         }
-
+        DB.commit();
         DB.close();
     }
 

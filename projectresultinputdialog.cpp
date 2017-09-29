@@ -216,7 +216,7 @@ void ProjectResultInputDialog::DBShow(QString QueryStr)
             QSqlDatabase::removeDatabase("MainDB");
             DBInit();
         }
-
+        DB.transaction();
         QSqlQuery query(DB);
         query.exec(QueryStr);
 
@@ -296,6 +296,7 @@ void ProjectResultInputDialog::DBShow(QString QueryStr)
             ActtachPath=query.value("acttachpath").toString();
             ui->lineEdit_Memo->setText(query.value("memo").toString());
         }
+        DB.commit();
         DB.close();
     }
 
@@ -322,9 +323,10 @@ bool ProjectResultInputDialog::DBSave(QString QueryStr)
             QSqlDatabase::removeDatabase("MainDB");
             DBInit();
         }
-
+        DB.transaction();
         QSqlQuery query(DB);
         query.exec(QueryStr);
+        DB.commit();
         DB.close();
     }
 

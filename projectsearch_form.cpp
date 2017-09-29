@@ -158,7 +158,7 @@ void ProjectSearch_Form::Search(QString QueryStr)
         ui->tableWidget->clear();
         ui->tableWidget->setRowCount(0);
         TableWidgetInit();
-
+        DB.transaction();
         QSqlQuery query(DB);
 
         query.exec(QueryStr);
@@ -186,6 +186,7 @@ void ProjectSearch_Form::Search(QString QueryStr)
 
         ui->tableWidget->resizeColumnsToContents();
         ui->tableWidget->resizeRowsToContents();
+        DB.commit();
         DB.close();
     }
 
@@ -213,13 +214,14 @@ void ProjectSearch_Form::Delete(QString QueryStr)
         ui->tableWidget->clear();
         ui->tableWidget->setRowCount(0);
         TableWidgetInit();
-
+        DB.transaction();
         QSqlQuery query(DB);
 
         query.exec(QueryStr);
 
         ui->tableWidget->resizeColumnsToContents();
         ui->tableWidget->resizeRowsToContents();
+        DB.commit();
         DB.close();
     }
 

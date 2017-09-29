@@ -83,7 +83,7 @@ void Statistics_Form::DBShow(int Select, QString QueryStr)
             QSqlDatabase::removeDatabase("MainDB");
             DBInit();
         }
-
+        DB.transaction();
         QSqlQuery query(DB);
 
         switch (Select)
@@ -186,6 +186,7 @@ void Statistics_Form::DBShow(int Select, QString QueryStr)
             ui->tableWidget_Recognition->resizeRowsToContents();
             break;
         }
+        DB.commit();
         DB.close();
     }
 
